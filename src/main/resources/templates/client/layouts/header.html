@@ -1,0 +1,107 @@
+<header id="nav-box-shadow" th:fragment="header" class="header">
+    <nav class="navbar navbar-expand-lg navigation" id="navbar nav-box-shadow">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/client/home}">
+                <img th:src="@{/client/images/logo.png}" alt="" class="img-fluid" />
+            </a>
+
+            <button
+                    class="navbar-toggler collapsed"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarmain"
+                    aria-controls="navbarmain"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <span class="icofont-navigation-menu"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarmain">
+                <ul class="navbar-nav ml-auto">
+                    <li
+                            th:class="${activePage == 'home'} ? 'active' : '' "
+                            class="nav-item"
+                    >
+                        <a class="nav-link" th:href="@{/client/home}">Trang chủ</a>
+                    </li>
+                    <li
+                            th:class="${activePage == 'about'} ? 'active' : '' "
+                            class="nav-item"
+                    >
+                        <a class="nav-link" th:href="@{/client/about}">Giới thiệu</a>
+                    </li>
+                    <li
+                            th:class="${activePage == 'procedure'} ? 'active' : '' "
+                            class="nav-item"
+                    >
+                        <a class="nav-link" th:href="@{/client/procedure}"
+                        >Quy trình đặt khám</a
+                        >
+                    </li>
+                    <li
+                            th:class="${activePage == 'faqs'} ? 'active' : '' "
+                            class="nav-item"
+                    >
+                        <a class="nav-link" th:href="@{/client/faqs}">Thắc mắc</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a
+                                class="nav-link dropdown-toggle"
+                                href="/personalinfo"
+                                id="dropdown02"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                        >
+                            <th:block sec:authorize="hasAuthority('CLIENT')">
+                                <span sec:authentication="principal.username"></span>
+                            </th:block>
+
+                            <th:block sec:authorize="not hasAuthority('CLIENT')">
+                                <span>Tài khoản</span>
+                                <span sec:authorize="hasAuthority('ADMIN')"> - QTV</span>
+                                <span sec:authorize="hasAuthority('DOCTOR')"> - Bác Sĩ</span>
+                            </th:block>
+
+                            <i class="icofont-thin-down"></i
+                            ></a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                            <th:block sec:authorize="hasAuthority('CLIENT')">
+                                <li>
+                                    <a class="dropdown-item" th:href="@{'/client/personalinfo/' + ${#authentication.principal.id}}"
+                                    >Thông tin cá nhân</a
+                                    >
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" th:href="@{'/client/record/' + ${#authentication.principal.id}}"
+                                    >Hồ sơ bệnh án</a
+                                    >
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/client/changepassword"
+                                    >Đổi mật khẩu</a
+                                    >
+                                </li>
+                            </th:block>
+                            <th:block sec:authorize="isAnonymous()">
+                                <li>
+                                    <a class="dropdown-item" href="/client/login">Đăng nhập</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/client/register">Đăng ký</a>
+                                </li>
+                            </th:block>
+                            <th:block sec:authorize="isAuthenticated()">
+                                <li>
+                                    <a class="dropdown-item" href="/client/logout">Đăng xuất</a>
+                                </li>
+                            </th:block>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

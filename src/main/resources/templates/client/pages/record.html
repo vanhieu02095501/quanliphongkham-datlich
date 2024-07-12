@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/client/layouts/base_layout"
+>
+
+<th:block layout:fragment="additional-link-at-head">
+    <link rel="stylesheet" href="/client/css/record.css">
+</th:block>
+
+<th:block layout:fragment="main-content">
+    <section class="section">
+        <div class="container-fluid">
+            <div id="section-history" class="card">
+                <div class="form_heading">
+                    <p class="form_heading-text">Hồ sơ bệnh án và Lịch sử khám</p>
+
+                    <div class="form_heading-line"></div>
+                    <p class="font-italic mt-5"><sup style="color: red">*</sup> Lưu ý: Vui lòng chọn bệnh nhân để xem hồ sơ bệnh án hoặc lịch khám của bệnh nhân đó</p>
+                </div>
+                <div th:if="${#lists.isEmpty(patient)}">
+                    <div class="alert alert-danger" role="alert" style="text-align: center">
+                        Bạn chưa có hồ sơ bệnh án hay lịch khám nào.
+                    </div>
+                </div>
+                <div th:unless="${#lists.isEmpty(patient)}" >
+                    <div class="history_wrap mt-3"  >
+                        <div class="row">
+                            <div th:data-id="${patient.getId()}"  class="patient-detail col-md-4" th:each="patient : ${patient}">
+                                <a class="history_item card p-1 mb-4"
+                                   th:href="@{'/client/record/PatientRecord/' + ${patient.getId()}}">
+                                    <div class="h-100 p-2 d-flex flex-row justify-content-between history_item-content"
+                                         style="place-items: center">
+                                        <div class="history_item-left">
+                                            <div class="flex-wrap d-flex align-items-center">
+                                                <div style="width: 25px">
+                                                    <i class="fa-solid fa-key" style="color: #f2408d"></i>
+                                                </div>
+                                                <span class="ml-2" style="width: 100px">Mã BN: </span>
+                                                <span class="font-weight-bold" th:text="${patient.id}"></span>
+                                            </div>
+                                            <div class="flex-wrap d-flex align-items-center">
+                                                <div style="width: 25px">
+                                                    <i class="fa-regular fa-user" style="color: #f2408d"></i>
+                                                </div>
+                                                <span class="ml-2" style="width: 100px">Họ tên: </span>
+                                                <span class="font-weight-bold" th:text="${patient.name}"></span>
+                                            </div>
+                                            <div class="flex-wrap d-flex align-items-center">
+                                                <div style="width: 25px">
+                                                    <i class="fa-regular fa-id-card" style="color: #f2408d"></i>
+                                                </div>
+                                                <span class="ml-2" style="width: 100px">Số CCCD: </span>
+                                                <span class="font-weight-bold" th:text="${patient.citizenNumber}"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="history_item-right text-center">
+                                            <p class="text-primary see_detail m-0">Xem chi tiết</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+</th:block>
+
+<th:block layout:fragment="additional-link-at-bottom">
+</th:block>

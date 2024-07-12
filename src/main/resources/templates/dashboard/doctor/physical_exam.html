@@ -1,0 +1,387 @@
+<html lang="vi"
+
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/dashboard/layout/app"
+>
+<th:block layout:fragment="content-header">
+    <div class="col-sm-6">
+        <h1>Bệnh án</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Bệnh án</li>
+        </ol>
+    </div>
+</th:block>
+
+<th:block layout:fragment="content-body">
+        <input type="hidden" th:value="${appointment.getId()}" name="appointmentId" id="appointmentId">
+        <div class="row">
+            <div class="col-sm-6" >
+                <!-- text input -->
+                <div class="form-group" style="width: 75%">
+                    <label>Họ và tên:</label>
+                    <input type="text" th:value="${appointment.getPatient().getName()}" class="form-control" readonly="readonly">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group" style="width: 75%">
+                    <label>Địa chỉ:</label>
+                    <input type="text" th:value="${appointment.getPatient().getAddress()}" class="form-control" readonly="readonly">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Ngày sinh:</label>
+                    <input class="form-control" th:value="${#dates.format(appointment.getPatient().getBirthday(), 'dd-MM-yyyy')}" style="width: 75%" readonly="readonly">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Giới tính</label>
+                    <input class="form-control" th:value="${appointment.getPatient().isGender() == true ? 'Nam' : 'Nữ'}" style="width: 75%" readonly="readonly">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group" style="width: 75%">
+                    <label>Nghề nghiệp:</label>
+                    <input type="text" class="form-control" th:value="${appointment.getPatient().getCareer()}" readonly="readonly">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group" style="width: 75%">
+                    <label>Mã CCCD:</label>
+                    <input type="text" class="form-control" th:value="${appointment.getPatient().getCitizenNumber()}" readonly="readonly">
+                </div>
+            </div>
+        </div>
+        <div class="form-group" >
+            <label>Nhập chuẩn đoán <span style="color: red">*</span> :</label>
+            <textarea class="form-control" name="diagnosis" id="diagnosis" rows="3" placeholder="Nhập chuẩn đoán..." required></textarea>
+            <div class="invalid-feedback" id="diagnosisError" style="font-size: 20px">Vui lòng nhập chuẩn đoán.</div>
+        </div>
+        <div class="form-group" >
+        <label>Nhập ghi chú <span style="color: red">*</span> :</label>
+        <textarea class="form-control" name="note" id="note" rows="3" placeholder="Nhập ghi chú..." required></textarea>
+        <div class="invalid-feedback" id="noteError" style="font-size: 20px">Vui lòng nhập ghi chú.</div>
+        </div>
+
+
+        <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+        <!--body-->
+        <div class="row">
+            <div class="col-sm-12">
+                <label>Dịch vụ khám <span class="require" style="color: red">*</span></label>
+                <div class="d-flex p-0 mb-3">
+                    <select id="selectServices" class="selectpicker" multiple data-live-search="true"
+                            data-style="btn-outline-secondary" data-width="50%">
+                        <option th:each="medical_service : ${medical_services}"
+                                th:text="${medical_service.getServiceName()}"
+                                th:value="${medical_service.getId()}" th:data-price="${medical_service.getPrice()}"></option>
+                    </select>
+                    <button id="btnDone_dichvu" class="btn btn-sm btn-primary ml-3" type="button">Done</button>
+                    <button type="button" class="btn btn-sm btn-secondary ml-3" id="btnResetFilter_dichvu">Reset
+                    </button>
+                </div>
+                <div class="invalid-feedback" id="serviceError" style="font-size: 20px">Vui lòng chọn dịch vụ.</div>
+            </div>
+            <div class="col-sm-12">
+                <table id="selectedServicesTable"
+                       class="table table-bordered table-hover dataTable dtr-inline"
+                       aria-describedby="example2_info">
+                    <thead>
+                    <tr class="text-blue">
+                        <th class="sorting">Mã dịch vụ</th>
+                        <th class="sorting">Dịch vụ</th>
+                        <th class="sorting">Giá</th>
+                        <th>Thao tác</th>
+                    </tr>
+                    </thead>
+                    <tbody id="selectedServicesBody">
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-12">
+                <label for="selectMedicines">Kê toa thuốc <span class="require" style="color: red">*</span></label>
+                <div class="d-flex p-0 mb-3">
+                    <select id="selectMedicines" class="selectpicker" multiple data-live-search="true"
+                            data-style="btn-outline-secondary" data-width="50%">
+                        <option th:each="medicine : ${medicines}"
+                                th:text="${medicine.getMedicine_name()}"
+                                th:value="${medicine.getId()}"></option>
+                    </select>
+                    <button id="btnDone_thuoc" class="btn btn-sm btn-primary ml-3" type="button">Done</button>
+                    <button type="button" class="btn btn-sm btn-secondary ml-3" id="btnResetFilter_thuoc">Reset</button>
+
+                </div>
+                <div class="invalid-feedback" id="medicineError" style="font-size: 20px">Vui lòng chọn thuốc.</div>
+            </div>
+            <div class="col-sm-12">
+                <table id="selectedMedicinesTable"
+                       class="table table-bordered table-hover dataTable dtr-inline"
+                       aria-describedby="example2_info">
+                    <thead class="text-blue">
+                    <tr>
+                        <th class="sorting">Mã thuốc</th>
+                        <th class="sorting">Tên thuốc</th>
+                        <th class="sorting">Số lượng</th>
+                        <th>Đơn vị</th>
+                        <th>Sử dụng</th>
+                        <th>Thao tác</th>
+                    </tr>
+                    </thead>
+                    <tbody id="selectedMedicinesBody">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-danger mx-3">Hủy</button>
+            <button class="btn btn-primary mx-3" id="submit">Tạo</button>
+        </div>
+    </div>
+</th:block>
+
+<th:block layout:fragment="service-script">
+    <!--<script src="/dashboard/js/doctor.js"></script>-->
+    <script>
+        $(document).ready(function () {
+            function validateForm() {
+                var isValid = true;
+                var diagnosis = $("#diagnosis").val().trim();
+                var note = $("#note").val().trim();
+                var selectedMedicines = $('#selectedMedicinesBody tr').length > 0;
+                var selectedServices = $('#selectedServicesBody tr').length > 0;
+
+                if (!diagnosis) {
+                    $("#diagnosis").addClass("is-invalid");
+                    $("#diagnosisError").show();
+                    isValid = false;
+                } else {
+                    $("#diagnosis").removeClass("is-invalid");
+                    $("#diagnosisError").hide();
+                }
+
+                if (!note) {
+                    $("#note").addClass("is-invalid");
+                    $("#noteError").show();
+                    isValid = false;
+                } else {
+                    $("#note").removeClass("is-invalid");
+                    $("#noteError").hide();
+                }
+
+                if (!selectedServices) {
+                    $('#selectServices').addClass("is-invalid");
+                    $("#serviceError").show();
+                    isValid = false;
+                } else {
+                    $('#selectServices').removeClass("is-invalid");
+                    $("#serviceError").hide();
+                }
+
+                if (!selectedMedicines) {
+                    $('#selectMedicines').addClass("is-invalid");
+                    $("#medicineError").show();
+                    isValid = false;
+                } else {
+                    $('#selectMedicines').removeClass("is-invalid");
+                    $("#medicineError").hide();
+                }
+
+                // Validate medicine details
+                $('#selectedMedicinesBody tr').each(function () {
+                    var quantity = $(this).find('td:eq(2) input').val();
+                    var unit = $(this).find('td:eq(3) input').val();
+                    var dosage = $(this).find('td:eq(4) input').val().trim();
+
+                    if (!quantity || quantity <= 0) {
+                        $(this).find('td:eq(2) input').addClass('is-invalid');
+                        isValid = false;
+                    } else {
+                        $(this).find('td:eq(2) input').removeClass('is-invalid');
+                    }
+
+                    if (!dosage) {
+                        $(this).find('td:eq(4) input').addClass('is-invalid');
+                        isValid = false;
+                    } else {
+                        $(this).find('td:eq(4) input').removeClass('is-invalid');
+                    }
+                });
+
+                return isValid;
+            }
+
+            function formatPrice() {
+                const priceElements = document.querySelectorAll('#format_price');
+                priceElements.forEach(element => {
+                    const price = parseFloat(element.textContent.replace(/[^\d.-]/g, ''));
+                    const formattedPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+                    element.textContent = formattedPrice;
+                });
+            }
+
+            $('#btnDone_thuoc').click(function () {
+                var selectedMedicines = $('#selectMedicines').val();
+
+                $('#selectedMedicinesBody').empty();
+
+                if (selectedMedicines) {
+                    selectedMedicines.forEach(function (medicine, index) {
+                        var medicineName = $('#selectMedicines option[value="' + medicine + '"]').text();
+
+                        var row = '<tr>' +
+                            '<td>' + medicine + '</td>' +
+                            '<td>' + medicineName + '</td>' +
+                            '<td><input type="number" class="form-control" id="quantity_' + medicine + '" min="1" required></td>' +
+                            '<td><select class="form-control" id="unit_' + medicine + '" required>' +
+                            '<option value="Viên">Viên</option>' +
+                            '<option value="Vỉ">Vỉ</option>' +
+                            '<option value="Hộp">Hộp</option>' +
+                            '<option value="Chai">Chai</option>' +
+                            '</select></td>' +
+                            '<td><input type="text" class="form-control" id="dosage_' + medicine + '" placeholder="Nhập liều dùng" required></td>' +
+                            '<td><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>' +
+                            '</tr>';
+                        $('#selectedMedicinesBody').append(row);
+                    });
+                }
+
+                // Clear validation errors when medicines are added
+                $('#selectMedicines').removeClass('is-invalid');
+                $("#medicineError").hide();
+            });
+
+            $('#btnDone_dichvu').click(function () {
+                var selectedServices = $('#selectServices').val();
+
+                $('#selectedServicesBody').empty();
+
+                if (selectedServices) {
+                    selectedServices.forEach(function (service, index) {
+                        var serviceName = $('#selectServices option[value="' + service + '"]').text();
+                        var servicePrice = $('#selectServices option[value="' + service + '"]').data('price');
+
+                        var row = '<tr>' +
+                            '<td>' + service + '</td>' +
+                            '<td>' + serviceName + '</td>' +
+                            '<td id="format_price">' + servicePrice + '</td>' +
+                            '<td><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>' +
+                            '</tr>';
+                        $('#selectedServicesBody').append(row);
+                    });
+                }
+                formatPrice();
+
+                $('#selectServices').removeClass('is-invalid');
+                $("#serviceError").hide();
+            });
+
+            function sendPatientRecordToController() {
+                if (!validateForm()) {
+                    return;
+                }
+                var diagnosis = $("#diagnosis").val().trim();
+                var note = $("#note").val().trim();
+                var medicineDetails = [];
+                $('#selectedMedicinesBody tr').each(function () {
+                    var medicineId = $(this).find('td:eq(0)').text();
+                    var quantity = $(this).find('td:eq(2) input').val();
+                    var unit = $(this).find('td:eq(3) select').val();
+                    var dosage = $(this).find('td:eq(4) input').val().trim();
+                    var medicineDetail = {
+                        "medicineId": medicineId,
+                        "quantity": quantity,
+                        "unit": unit,
+                        "dosage": dosage
+                    };
+                    medicineDetails.push(medicineDetail);
+                });
+                var serviceDetails = [];
+                $('#selectedServicesBody tr').each(function () {
+                    var serviceId = $(this).find('td:eq(0)').text();
+                    var serviceName = $(this).find('td:eq(1)').text();
+                    var servicePrice = $(this).find('td:eq(2)').text().replace(/[^\d.-]/g, '');
+                    var serviceDetail = {
+                        "serviceId": serviceId,
+                        "serviceName": serviceName,
+                        "servicePrice": servicePrice
+                    };
+                    serviceDetails.push(serviceDetail);
+                });
+                var jsonData = {
+                    diagnosis: diagnosis,
+                    note: note,
+                    listPrescription: medicineDetails,
+                    listService: serviceDetails
+                };
+
+                console.log(JSON.stringify(jsonData));
+
+                var appointmentId = $("#appointmentId").val();
+                var url = 'http://localhost:8082/doctor/physical_exam/' + appointmentId;
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    contentType: 'application/json',
+                    data: JSON.stringify(jsonData),
+                    success: function (response) {
+                        window.location.href = response.redirectUrl;
+                        alert("Bệnh án đã được tạo thành công!");
+                    },
+                    error: function (xhr, status, error) {
+                        $('#error-message').text(xhr.responseText).show();
+                        $('#success-message').hide();
+                    }
+                });
+            }
+
+            $('#submit').on('click', function (event) {
+                event.preventDefault();
+                sendPatientRecordToController();
+            });
+
+            $('#selectedMedicinesBody').on('click', '.btn-danger', function () {
+                $(this).closest('tr').remove();
+
+                // Clear validation errors when medicines are removed
+                if ($('#selectedMedicinesBody tr').length === 0) {
+                    $('#selectMedicines').addClass('is-invalid');
+                    $("#medicineError").show();
+                }
+            });
+
+            $('#btnResetFilter_thuoc').click(function () {
+                $('#selectedMedicinesBody').empty();
+                $('#selectMedicines').addClass('is-invalid');
+                $("#medicineError").show();
+            });
+
+            $('#selectedServicesBody').on('click', '.btn-danger', function () {
+                $(this).closest('tr').remove();
+                if ($('#selectedServicesBody tr').length === 0) {
+                    $('#selectServices').addClass('is-invalid');
+                    $("#serviceError").show();
+                }
+            });
+
+            $('#btnResetFilter_dichvu').click(function () {
+                $('#selectedServicesBody').empty();
+                $('#selectServices').addClass('is-invalid');
+                $("#serviceError").show();
+            });
+        });
+
+    </script>
+</th:block>
+
+
+</html>

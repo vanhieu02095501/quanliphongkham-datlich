@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/client/layouts/base_layout"
+>
+
+<th:block layout:fragment="main-content">
+    <!-- Slider Start -->
+    <section class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-xl-7">
+                    <div class="block">
+                        <div class="divider mb-3"></div>
+                        <span class="text-uppercase text-sm letter-spacing"
+                        >Đặt khám nhanh - Lấy số thứ tự trực tuyến - Tư vấn sức khỏe từ
+                    xa</span
+                        >
+                        <h1 class="mb-3 mt-3">Vì thời gian của bạn là vô giá!</h1>
+
+                        <p class="mb-4 pr-5">
+                            Chúng tôi cam kết mang lại những dịch vụ chăm sóc sức khỏe chất
+                            lượng cao nhất, được công nhận và đánh giá theo chuẩn bộ y tế.
+                            Đồng hành cùng bạn trên hành trình sống khỏe mạnh và hạnh phúc
+                            hơn, với các phương pháp và tiêu chuẩn y tế hàng đầu.
+                        </p>
+                        <div class="btn-container">
+                            <a
+                                    href="/client/booking"
+                                    target="_blank"
+                                    class="btn btn-main-2 btn-icon btn-round-full"
+                                    style="color: white;text-decoration: none"
+                            >Đặt lịch khám ngay <i class="icofont-simple-right ml-2"></i
+                            ></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="feature-block d-lg-flex">
+                        <div class="feature-item mb-5 mb-lg-0">
+                            <div class="feature-icon mb-4">
+                                <i class="icofont-surgeon-alt"></i>
+                            </div>
+                            <span>Phục vụ 24/24</span>
+                            <h4 class="mb-3">Đăng ký lịch hẹn online</h4>
+                            <p class="mb-4">
+                                Bệnh nhân chủ động chọn thông tin đặt khám nhanh (ngày khám,
+                                giờ khám). Bệnh nhân sẽ nhận lấy số thứ tự trực tuyến ngay
+                                trên phần mềm.
+                            </p>
+                            <a href="/client/booking" class="btn btn-main btn-round-full" style="color: white"
+                            >Đặt lịch khám ngay</a
+                            >
+                        </div>
+
+                        <div class="feature-item mb-5 mb-lg-0">
+                            <div class="feature-icon mb-4">
+                                <i class="icofont-ui-clock"></i>
+                            </div>
+                            <span>Thời gian đón tiếp bệnh nhân</span>
+                            <h4 class="mb-3">Thứ 2 - thứ 6:</h4>
+                            <ul class="w-hours list-unstyled">
+                                <li class="d-flex justify-content-between">
+                                    Ca sáng : <span>8:00 - 11:00</span>
+                                </li>
+                                <li class="d-flex justify-content-between">
+                                    Ca chiều : <span>12:00 - 17:00</span>
+                                </li>
+                                <li class="d-flex justify-content-between">
+                                    Ca tối : <span>17:00 - 20:00</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-item mb-5 mb-lg-0">
+                            <div class="feature-icon mb-4">
+                                <i class="icofont-support"></i>
+                            </div>
+                            <span>Liên hệ hỗ trợ</span>
+                            <h4 class="mb-3">1-800-700-6200</h4>
+                            <p>
+                                Tổng đài hotline hoạt động 24/7 để tiếp nhận đăng ký khám bệnh
+                                của bạn. Hãy gọi ngay để đặt lịch và nhận sự chăm sóc tốt nhất
+                                từ đội ngũ y tế của chúng tôi!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-sm-6">
+                    <div class="about-img">
+                        <img
+                                th:src="@{/client/images/about/Feature1.webp}"
+                                alt=""
+                                class="img-fluid"
+                        />
+                        <img
+                                th:src="@{/client/images/about/54a320ac-1a85-4a86-bc83-57e99265fc9c-thumnail-video.webp}"
+                                alt=""
+                                class="img-fluid mt-4"
+                        />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="about-img mt-4 mt-lg-0">
+                        <img
+                                th:src="@{/client/images/about/chup-anh-profile-bac-si-phong-kham-657d4478271fd.jpg}"
+                                alt=""
+                                class="img-fluid"
+                        />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="about-content pl-4 mt-4 mt-lg-0">
+                        <h2 class="title-color text-center">
+                            Với đội ngũ bác sĩ hàng đầu
+                        </h2>
+                        <p style="text-align: justify;" class="mt-4 mb-5">
+                            Với đội ngũ bác sĩ hàng đầu, những chuyên gia giàu kinh nghiệm và tận tâm. Chúng tôi cam kết
+                            mang đến dịch vụ chăm sóc sức khỏe với chất lượng tốt nhất, đồng
+                            hành cùng bệnh nhân trên con đường hồi phục và duy trì sức khỏe.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta position-relative">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="counter-stat">
+                            <i class="icofont-doctor"></i>
+                            <span class="h3 counter" data-count="22">0</span>M+
+                            <p>Lượt khám</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="counter-stat">
+                            <i class="icofont-flag"></i>
+                            <span class="h3 counter" data-count="138">0</span>K+
+                            <p>Lượt truy cập hàng tháng</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="counter-stat">
+                            <i class="icofont-badge"></i>
+                            <span class="h3 counter" data-count="45">0</span>+
+                            <p>Bác sĩ đầy kinh nghiệm</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="counter-stat">
+                            <i class="icofont-globe"></i>
+                            <span class="h3 counter" data-count="985">0</span>+
+                            <p>Lượt truy cập hàng ngày</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section testimonial-2 gray-bg mt-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="section-title text-center">
+                        <h2>Chúng tôi đã phục vụ hơn 5000 bệnh nhân</h2>
+                        <div class="divider mx-auto my-4"></div>
+                        <p>Khách hàng đã nói gì về chúng tôi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 testimonial-wrap-2">
+                    <div class="testimonial-block style-2 gray-bg">
+                        <i class="icofont-quote-right"></i>
+
+                        <div class="testimonial-thumb">
+                            <img
+                                    th:src="@{/client/images/feedbacks/unnamed.jpg}"
+                                    alt=""
+                                    class="img-fluid"
+                            />
+                        </div>
+
+                        <div class="client-info">
+                            <h4>Dịch vụ tuyệt vời!</h4>
+                            <span>Tim</span>
+                            <p>
+                                Dịch vụ khám bệnh ở đây rất nhanh chóng và hiệu quả. Tôi không
+                                phải chờ đợi lâu và cảm thấy hài lòng với sự chăm sóc mà tôi
+                                nhận được.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-block style-2 gray-bg">
+                        <div class="testimonial-thumb">
+                            <img
+                                    th:src="@{/client/images/feedbacks/hale3676-1595059945030660339004-1595314054469702559449.jpg}"
+                                    alt=""
+                                    class="img-fluid"
+                            />
+                        </div>
+
+                        <div class="client-info">
+                            <h4>Bác sĩ rất tận tình!</h4>
+                            <span>Mullar Sarth</span>
+                            <p>
+                                Tôi rất ấn tượng với sự chuyên nghiệp và tận tình của đội ngũ
+                                y bác sĩ ở đây. Họ luôn lắng nghe và giải đáp mọi thắc mắc của
+                                tôi một cách rõ ràng và chu đáo.
+                            </p>
+                        </div>
+
+                        <i class="icofont-quote-right"></i>
+                    </div>
+
+                    <div class="testimonial-block style-2 gray-bg">
+                        <div class="testimonial-thumb">
+                            <img
+                                    th:src="@{/client/images/feedbacks/4.png}"
+                                    alt=""
+                                    class="img-fluid"
+                            />
+                        </div>
+
+                        <div class="client-info">
+                            <h4>Phòng khám sạch sẻ!</h4>
+                            <span>Kolis Mullar</span>
+                            <p>
+                                Sự sạch sẽ và ngăn nắp tại phòng khám này thực sự là điểm
+                                mạnh. Tôi luôn cảm thấy tự tin và thoải mái khi đến đây để
+                                được chăm sóc sức khỏe của mình.
+                            </p>
+                        </div>
+
+                        <i class="icofont-quote-right"></i>
+                    </div>
+
+                    <div class="testimonial-block style-2 gray-bg">
+                        <div class="testimonial-thumb">
+                            <img
+                                    th:src="@{/client/images/feedbacks/1680832968_kh-nh-vy-3.jpg.webp}"
+                                    alt=""
+                                    class="img-fluid"
+                            />
+                        </div>
+
+                        <div class="client-info">
+                            <h4>Tư Vấn Chi Tiết và Am Hiểu!</h4>
+                            <span>Partho Sarothi</span>
+                            <p class="mt-4">
+                                Tôi đã được tư vấn rất chi tiết và rõ ràng về các vấn đề sức
+                                khỏe của mình. Đội ngũ y bác sĩ ở đây thực sự có kiến thức sâu
+                                rộng và am hiểu về lĩnh vực của mình.
+                            </p>
+                        </div>
+                        <i class="icofont-quote-right"></i>
+                    </div>
+
+                    <div class="testimonial-block style-2 gray-bg">
+                        <div class="testimonial-thumb">
+                            <img
+                                    th:src="@{/client/images/feedbacks/thuy-tien-5-8536-16468768225181332094802.jpg.webp}"
+                                    alt=""
+                                    class="img-fluid"
+                            />
+                        </div>
+
+                        <div class="client-info">
+                            <h4>Phòng khám hiện đại!</h4>
+                            <span>Kolis Mullar</span>
+                            <p>
+                                Tôi ấn tượng với việc phòng khám áp dụng công nghệ tiên tiến
+                                vào quy trình chăm sóc sức khỏe. Các máy móc hiện đại giúp
+                                tiết kiệm thời gian và mang lại kết quả chính xác.
+                            </p>
+                        </div>
+                        <i class="icofont-quote-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</th:block>

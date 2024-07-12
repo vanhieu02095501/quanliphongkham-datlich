@@ -1,0 +1,25 @@
+.bg-card-header {
+    background-color: #307be7;
+    color: #fff !important;
+}
+
+.text-white {
+    color: #fff !important;
+}
+
+.border-card-box {
+    border: 1px solid  #307be7;
+}
+
+.card {
+    margin-bottom: 10px;    
+}
+
+.card-header {
+    padding: 20px;
+}
+
+.card-header h5 {
+    font-size: 15px;
+}
+

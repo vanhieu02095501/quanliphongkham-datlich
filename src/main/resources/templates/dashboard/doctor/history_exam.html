@@ -1,0 +1,160 @@
+<html lang="vi"
+
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/dashboard/layout/app">
+<head>
+
+    <link rel="stylesheet" href="/dashboard/css/history_exam.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <title>history_exam</title>>
+</head>
+<th:block layout:fragment="content-header">
+    <div class="col-sm-6">
+        <h1>Lịch sử khám bệnh</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Lịch sử khám bệnh</li>
+        </ol>
+    </div>
+</th:block>
+
+<th:block layout:fragment="content-body">
+    <form th:action="@{/doctor/history_exam}" method="get">
+        <div class="row mb-3">
+            <div class="col-sm-2">
+                <span class="font-weight-bold">Chọn khoảng thời gian: </span>
+            </div>
+            <div class="col-sm-4">
+                <input type="text" th:value="${searchDate}" class="form-control" id="datarange" name="dataDate">
+            </div>
+
+            <div class="col-sm-6 d-flex align-items-center">
+                <button class="button-app">Tìm kiếm</button>
+            </div>
+        </div>
+    </form>
+
+    <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+        <!--body-->
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="example1"
+                       class="table table-bordered table-hover dataTable dtr-inline table-striped"
+                       aria-describedby="example2_info">
+                    <div th:if="${#lists.isEmpty(historyAppointment)}">
+
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            Không có lịch sử khám!
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div th:unless="${#lists.isEmpty(historyAppointment)}">
+                        <thead>
+                        <tr>
+                            <th class="sorting text-center"
+                                aria-label="Rendering engine: activate to sort column descending">
+                                STT
+                            </th>
+                            <th class="sorting text-center">Ngày khám</th>
+                            <th class="sorting text-center">Ca khám</th>
+                            <th class="sorting text-center">Số khám</th>
+                            <th class="sorting text-center">Tên bác sĩ</th>
+                            <th class="sorting text-center">Chẩn đoán</th>
+                            <th class="sorting text-center">Trạng thái</th>
+                            <th class="sorting text-center">Chi tiết phiếu khám</th>
+
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <div th:each="item, iterStat : ${historyAppointment}">
+                            <input type="hidden" th:value="${item.patientRecordId}">
+                            <tr class="odd">
+                                <td class="dtr-control sorting_1 text-center align-middle"
+                                    th:text="${iterStat.index + 1}"></td>
+                                <td class="text-center align-middle"
+                                    th:text="${#dates.format(item.appointmentDate, 'dd/MM/yyyy')}"></td>
+                                <td class="text-center align-middle" th:text="${item.appointmentShift}"></td>
+                                <td class="text-center align-middle" th:text="${item.orderNumber}"></td>
+                                <td class="text-center align-middle" th:text="${item.doctorName}"></td>
+                                <td>
+                                    <label>
+                                            <textarea th:text="${item.diagnosis}" rows="4" cols="10"
+                                                      class="form-control"
+                                                      readonly
+                                                      style="resize: none; padding: 10px;font-family: Arial, sans-serif; background-color: white;margin: 0">
+                                                Bệnh ho lâu năm, cần thuốc
+                                            </textarea>
+                                    </label>
+                                </td>
+                                <td class="text-center align-middle">
+                                    <span class="badge badge-success" th:if="${item.statusId == 3}">Hoàn thành</span>
+                                </td>
+                                <td class="text-center align-middle">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <a th:href="@{/doctor/history_exam/patientRecord/{patientRecordId}(patientRecordId=${item.patientRecordId})}" class="see-detail">
+                                            <i class="fa-solid fa-eye" style="color: white"></i>
+                                        </a>
+                                    </div>
+                                        <!-- =======================================================     -->
+<!--                                    <div class="modal fade" th:id="${'modal'+item.patientRecordId}" tabindex="-1" role="dialog"-->
+<!--                                         aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--                                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">-->
+<!--                                            <div class="modal-content">-->
+<!--                                                <div class="modal-header">-->
+<!--                                                    <h5 class="modal-title" id="exampleModalLabel">Chi tiết phiếu khám</h5>-->
+<!--                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                                                        <span aria-hidden="true">&times;</span>-->
+<!--                                                    </button>-->
+<!--                                                </div>-->
+<!--                                                <div class="modal-body">-->
+<!--                                                    <div id="patientRecordDetails"></div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+                                </td>
+                            </tr>
+
+                        </div>
+
+                        </tbody>
+                    </div>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</th:block>
+
+<th:block layout:fragment="service-script">
+<!--    <script src="/js/document.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var datePicker = $('#datarange').daterangepicker({
+                alwaysShowCalendars: true,
+                locale: {
+                    format: 'DD/MM/YYYY',
+                },
+            });
+
+            $('.button-refresh').click(function () {
+                datePicker.data('daterangepicker').setStartDate(startDate);
+                datePicker.data('daterangepicker').setEndDate(endDate);
+            });
+        });
+    </script>
+
+</th:block>
+</html>

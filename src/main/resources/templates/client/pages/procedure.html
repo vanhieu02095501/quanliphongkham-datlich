@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/client/layouts/base_layout"
+>
+
+<th:block layout:fragment="additional-link-at-head">
+    <link
+            rel="stylesheet"
+            th:href="@{/client/css/procedure.css}"
+    />
+    <link
+            rel="stylesheet"
+            th:href="@{/client/css/modernizr.css}"
+    />
+    <script th:src="@{/client/js/timeline.js}"></script>
+</th:block>
+
+
+<th:block layout:fragment="main-content">
+    <section class="page-title bg-1">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block text-center">
+                        <h1 class="text-capitalize mb-5 text-lg">
+                            Quy trình đăng ký khám bệnh
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding-top: 10px" class="section">
+        <div class="container">
+            <section id="cd-timeline" class="cd-container">
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-picture">
+                        <img
+                                src="/client/images/numbers/1-circle-fill.svg"
+                                alt="Picture"
+                        />
+                    </div>
+                    <!-- cd-timeline-img -->
+
+                    <div class="cd-timeline-content">
+                        <h2>BƯỚC 1: ĐẶT LỊCH KHÁM</h2>
+                        <ul>
+                            <li>Đăng nhập phần mềm trên web.</li>
+                            <li>Chọn hình thức đặt khám: Theo ngày và ca khám.</li>
+                            <li>Nhập thông tin bệnh nhân: Bằng số hồ sơ hoặc tạo mới.</li>
+                            <li>
+                                Chọn thông tin khám: Chuyên khoa, bác sĩ, ngày khám, giờ khám
+                                và có BHYT hay không.
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- cd-timeline-content -->
+                </div>
+                <!-- cd-timeline-block -->
+
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-movie">
+                        <img src="/client/images/numbers/2.svg" alt="Movie" />
+                    </div>
+                    <!-- cd-timeline-img -->
+
+                    <div class="cd-timeline-content">
+                        <h2>BƯỚC 2: THANH TOÁN TIỀN KHÁM</h2>
+                        <ul>
+                            <li>
+                                Chọn loại thẻ thanh toán: Thẻ thanh toán quốc tế hoặc thẻ ATM
+                                nội địa.
+                            </li>
+                            <li>
+                                Kiểm tra tiền khám, các loại phí và tổng tiền thanh toán.
+                            </li>
+                            <li>Nhập thông tin thẻ để tiến hành thanh toán.</li>
+                        </ul>
+                    </div>
+                    <!-- cd-timeline-content -->
+                </div>
+                <!-- cd-timeline-block -->
+
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-picture">
+                        <img src="/client/images/numbers/3.svg" alt="Picture" />
+                    </div>
+                    <!-- cd-timeline-img -->
+
+                    <div class="cd-timeline-content">
+                        <h2>BƯỚC 3: XÁC NHẬN NGƯỜI BỆNH ĐẾN BỆNH VIỆN KHÁM THEO HẸN</h2>
+                        <ul>
+                            <li>
+                                Sau khi đặt khám thành công phiếu khám điện tử sẽ được gửi
+                                ngay qua email, tin nhắn sms và trên phần mềm.
+                            </li>
+                            <li>
+                                <strong>Đến ngày khám, </strong>
+                                <ul>
+                                    <li>
+                                        Người bệnh không BHYT sẽ đến trực tiếp phòng khám trước
+                                        giờ hẹn 15-30 phút để khám bệnh .
+                                    </li>
+                                    <li>
+                                        Người bệnh khám BHYT vui lòng đến quầy 12,13,14 khu A
+                                        trước giờ hẹn 15-30 phút để xác nhận bảo hiểm trước khi
+                                        vào phòng khám .
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- cd-timeline-content -->
+                </div>
+                <!-- cd-timeline-block -->
+
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-location">
+                        <img src="/client/images/numbers/4.svg" alt="Location" />
+                    </div>
+                    <!-- cd-timeline-img -->
+
+                    <div class="cd-timeline-content">
+                        <h2>BƯỚC 4: KHÁM VÀ THỰC HIỆN CẬN LÂM SÀNG</h2>
+                        <ul>
+                            <li>
+                                Người bệnh khám tại các phòng khám chuyên khoa theo sự hướng
+                                dẫn của nhân viên y tế.
+                            </li>
+                            <li>
+                                Thực hiện cận lâm sàng (nếu có) và đóng phí tại các quầy thu
+                                ngân
+                            </li>
+                            <li>
+                                Khi đủ kết quả cận lâm sàng, người bệnh quay lại phòng khám
+                                gặp Bác sĩ nhận toa thuốc.
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- cd-timeline-content -->
+                </div>
+                <!-- cd-timeline-block -->
+
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-location">
+                        <img src="/client/images/numbers/5.svg" alt="Location" />
+                    </div>
+                    <!-- cd-timeline-img -->
+
+                    <div class="cd-timeline-content">
+                        <h2>BƯỚC 5: NHẬN THUỐC</h2>
+                        <ul>
+                            <li>
+                                <strong>Người bệnh có BHYT:</strong> Thực hiện kết toán BHYT
+                                tại quầy 17,18,19,20 tầng trệt khu A và nhận thuốc tại nhà
+                                thuốc khu B.
+                            </li>
+                            <li>
+                                <strong>Người bệnh không có BHYT:</strong> Đến nhà thuốc khu A
+                                hoặc khu B mua thuốc, thanh toán tiền thuốc tại quầy hoặc trừ
+                                vào tài khoản thẻ khám bệnh (nếu có).
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- cd-timeline-content -->
+                </div>
+                <!-- cd-timeline-block -->
+
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-movie">
+                        <img src="/client/images/numbers/6.svg" alt="Movie" />
+                    </div>
+                    <!-- cd-timeline-img -->
+
+                    <div class="cd-timeline-content">
+                        <h2>BƯỚC 6: ĐẶT LỊCH TÁI KHÁM</h2>
+                        <ul>
+                            <li>
+                                Sử dụng phần mềm đặt hẹn tái khám như BƯỚC 1 và BƯỚC 2 để nhận
+                                phiếu khám điện tử.
+                            </li>
+                            <p style="font-weight: bold; color: black">* Lưu ý</p>
+                            <li>
+                                Chọn bác sĩ khám và ngày tái khám theo thông tin trên toa
+                                thuốc.
+                            </li>
+                            <li>
+                                Nhập thông tin người bệnh bằng số hồ sơ trên toa thuốc (không
+                                được tạo mới).
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- cd-timeline-content -->
+                </div>
+                <!-- cd-timeline-block -->
+            </section>
+        </div>
+    </section>
+</th:block>
+
+<th:block layout:fragment="additional-link-at-bottom">
+    <script>
+        $(document).ready(function () {
+          var $timeline_block = $(".cd-timeline-block");
+
+          //hide timeline blocks which are outside the viewport
+          $timeline_block.each(function () {
+            if (
+              $(this).offset().top >
+              $(window).scrollTop() + $(window).height() * 0.75
+            ) {
+              $(this)
+                .find(".cd-timeline-img, .cd-timeline-content")
+                .addClass("is-hidden");
+            }
+          });
+
+          //on scolling, show/animate timeline blocks when enter the viewport
+          $(window).on("scroll", function () {
+            $timeline_block.each(function () {
+              if (
+                $(this).offset().top <=
+                  $(window).scrollTop() + $(window).height() * 0.75 &&
+                $(this).find(".cd-timeline-img").hasClass("is-hidden")
+              ) {
+                $(this)
+                  .find(".cd-timeline-img, .cd-timeline-content")
+                  .removeClass("is-hidden")
+                  .addClass("bounce-in");
+              }
+            });
+          });
+        });
+    </script>
+</th:block>

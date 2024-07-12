@@ -1,0 +1,109 @@
+*   [33m270f6fe[m[33m ([m[1;36mHEAD -> [m[1;32mhieu[m[33m)[m Merge remote-tracking branch 'origin/develop' into hieu
+[31m|[m[32m\[m  
+[31m|[m *   [33mcae1129[m[33m ([m[1;31morigin/develop[m[33m, [m[1;31morigin/HEAD[m[33m)[m commit code branch backup
+[31m|[m [33m|[m[34m\[m  
+[31m|[m [33m|[m *   [33m6e34f0a[m Merge pull request #17 from trung020102/feature/edit+add_admin
+[31m|[m [33m|[m [35m|[m[36m\[m  
+[31m|[m [33m|[m [35m|[m * [33m7ed2de7[m[33m ([m[1;31morigin/feature/edit+add_admin[m[33m)[m loi chinh ta
+[31m|[m [33m|[m [35m|[m[35m/[m  
+[31m|[m [33m|[m * [33m65d9c04[m fix
+[31m|[m [33m|[m * [33m2c8ba54[m fix
+[31m|[m [33m|[m *   [33m5530b42[m Merge pull request #16 from trung020102/feature/edit+add_admin
+[31m|[m [33m|[m [1;31m|[m[1;32m\[m  
+[31m|[m [33m|[m [1;31m|[m *   [33m16bb253[m Add avatar
+[31m|[m [33m|[m [1;31m|[m [1;33m|[m[1;31m\[m  
+[31m|[m [33m|[m [1;31m|[m [1;33m|[m[1;31m/[m  
+[31m|[m [33m|[m [1;31m|[m[1;31m/[m[1;33m|[m   
+[31m|[m [33m|[m [1;31m|[m * [33m4b20d39[m Add avatar
+[31m|[m [33m|[m [1;31m|[m * [33m80de407[m add
+[31m|[m [33m|[m [1;31m|[m * [33m19219fd[m go back
+[31m|[m * [1;31m|[m [1;34m|[m [33me282cb0[m CRUD Service
+[31m|[m [1;31m|[m[1;31m/[m [1;34m/[m  
+* [1;31m|[m [1;34m|[m [33m14642b9[m[33m ([m[1;31morigin/hieu[m[33m)[m security 1st
+* [1;31m|[m [1;34m|[m [33m901597d[m Merge remote-tracking branch 'origin/develop' into hieu
+[1;35m|[m[1;31m\[m[1;31m|[m [1;34m|[m 
+[1;35m|[m * [1;34m|[m [33m17ea12b[m[33m ([m[1;32mdevelop[m[33m)[m ...
+[1;35m|[m * [1;34m|[m   [33mc69bb0e[m Merge branch 'develop' of https://github.com/trung020102/QuanLyPhongKhamVaDatLich into develop
+[1;35m|[m [31m|[m[32m\[m [1;34m\[m  
+[1;35m|[m [31m|[m * [1;34m\[m   [33m59082a8[m Merge pull request #15 from trung020102/feature/resend_the_token_for_registration
+[1;35m|[m [31m|[m [33m|[m[34m\[m [1;34m\[m  
+[1;35m|[m [31m|[m [33m|[m * [1;34m|[m [33m00f3ce6[m[33m ([m[1;31morigin/feature/resend_the_token_for_registration[m[33m)[m change default success url
+[1;35m|[m [31m|[m [33m|[m * [1;34m|[m [33m6d0bcc0[m complete resend token
+[1;35m|[m [31m|[m [33m|[m * [1;34m|[m   [33m1d9f09e[m Merge branch 'develop' of https://github.com/trung020102/QuanLyPhongKhamVaDatLich into feature/resend_the_token_for_registration
+[1;35m|[m [31m|[m [33m|[m [35m|[m[33m\[m [1;34m\[m  
+[1;35m|[m [31m|[m [33m|[m [35m|[m[33m/[m [1;34m/[m  
+[1;35m|[m [31m|[m [33m|[m[33m/[m[35m|[m [1;34m|[m   
+[1;35m|[m [31m|[m [33m|[m * [1;34m|[m [33m46e9b28[m complete resend token
+[1;35m|[m * [33m|[m [36m|[m [1;34m|[m [33mc7b3f78[m Fix Security, Login Logout, Craeate ServiceMedical.
+[1;35m|[m * [33m|[m [36m|[m [1;34m|[m [33m3ce5d1f[m Fix Security, Login Logout, Craeate ServiceMedical.
+[1;35m|[m [33m|[m[33m/[m [36m/[m [1;34m/[m  
+[1;35m|[m * [36m|[m [1;34m|[m [33m153d70f[m Merge pull request #14 from trung020102/feature/register_account_for_client
+[1;35m|[m [1;31m|[m[36m\[m[36m|[m [1;34m|[m 
+[1;35m|[m [1;31m|[m * [1;34m|[m   [33mc976221[m[33m ([m[1;31morigin/feature/register_account_for_client[m[33m)[m Fix conflict
+[1;35m|[m [1;31m|[m [1;33m|[m[1;31m\[m [1;34m\[m  
+[1;35m|[m [1;31m|[m [1;33m|[m[1;31m/[m [1;34m/[m  
+[1;35m|[m [1;31m|[m[1;31m/[m[1;33m|[m [1;34m|[m   
+[1;35m|[m [1;31m|[m * [1;34m|[m [33m50e640e[m Done registration function with token authentication
+* [1;31m|[m [1;34m|[m [1;34m|[m [33m9a07270[m update layout BE
+[1;31m|[m[1;31m/[m [1;34m/[m [1;34m/[m  
+* [1;34m|[m [1;34m|[m   [33m53e6b82[m Merge pull request #13 from trung020102/feature/user_info_booking
+[1;34m|[m[1;36m\[m [1;34m\[m [1;34m\[m  
+[1;34m|[m [1;36m|[m[1;34m/[m [1;34m/[m  
+[1;34m|[m[1;34m/[m[1;36m|[m [1;34m|[m   
+[1;34m|[m * [1;34m|[m   [33m6022bc4[m[33m ([m[1;31morigin/feature/user_info_booking[m[33m)[m update layout
+[1;34m|[m [31m|[m[1;34m\[m [1;34m\[m  
+[1;34m|[m [31m|[m[1;34m/[m [1;34m/[m  
+[1;34m|[m[1;34m/[m[31m|[m [1;34m|[m   
+* [31m|[m [1;34m|[m   [33m0977170[m Merge pull request #12 from trung020102/feature/buid_security_configuration_v2
+[1;34m|[m[34m\[m [31m\[m [1;34m\[m  
+[1;34m|[m [34m|[m[1;34m_[m[31m|[m[1;34m/[m  
+[1;34m|[m[1;34m/[m[34m|[m [31m|[m   
+[1;34m|[m * [31m|[m [33mb747b85[m[33m ([m[1;31morigin/feature/buid_security_configuration_v2[m[33m)[m add prefix /client for homecontroller
+[1;34m|[m * [31m|[m   [33mcf31b29[m Fix conflict
+[1;34m|[m [35m|[m[1;34m\[m [31m\[m  
+[1;34m|[m [35m|[m[1;34m/[m [31m/[m  
+[1;34m|[m[1;34m/[m[35m|[m [31m|[m   
+[1;34m|[m * [31m|[m [33m41a8ce6[m build security configuration
+[1;34m|[m [36m|[m * [33m7aa247b[m add record & history layout
+[1;34m|[m [36m|[m *   [33m2a4b88c[m Merge branch 'develop' of https://github.com/trung020102/QuanLyPhongKhamVaDatLich into feature/user_info_booking
+[1;34m|[m [36m|[m [1;31m|[m[1;34m\[m  
+[1;34m|[m [36m|[m[1;34m_[m[1;31m|[m[1;34m/[m  
+[1;34m|[m[1;34m/[m[36m|[m [1;31m|[m   
+* [36m|[m [1;31m|[m   [33m9a8c94d[m Merge pull request #11 from trung020102/feature/edit+add_admin
+[1;33m|[m[1;34m\[m [36m\[m [1;31m\[m  
+[1;33m|[m * [36m\[m [1;31m\[m   [33m3acdcd1[m Merge branch 'develop' into feature/edit+add_admin
+[1;33m|[m [1;35m|[m[1;36m\[m [36m\[m [1;31m\[m  
+[1;33m|[m [1;35m|[m * [36m|[m [1;31m|[m [33m2c8c1cd[m delete 1 file
+[1;33m|[m [1;35m|[m[1;33m/[m [36m/[m [1;31m/[m  
+[1;33m|[m[1;33m/[m[1;35m|[m [36m|[m [1;31m|[m   
+[1;33m|[m * [36m|[m [1;31m|[m   [33m3e21785[m Merge branch 'develop' of https://github.com/trung020102/QuanLyPhongKhamVaDatLich into feature/edit+add_admin
+[1;33m|[m [31m|[m[1;33m\[m [36m\[m [1;31m\[m  
+[1;33m|[m [31m|[m[1;33m/[m [36m/[m [1;31m/[m  
+[1;33m|[m[1;33m/[m[31m|[m [36m|[m [1;31m|[m   
+* [31m|[m [36m|[m [1;31m|[m   [33meb064d8[m Merge pull request #10 from trung020102/feature/add_form_user
+[33m|[m[34m\[m [31m\[m [36m\[m [1;31m\[m  
+[33m|[m * [31m|[m [36m|[m [1;31m|[m [33mf29348a[m[33m ([m[1;31morigin/feature/add_form_user[m[33m)[m add form information for user
+[33m|[m[33m/[m [31m/[m [36m/[m [1;31m/[m  
+[33m|[m * [36m|[m [1;31m|[m [33m595f2c8[m Fix UI
+[33m|[m [34m|[m [36m|[m *   [33m5fcad1a[m Merge branch 'develop' of https://github.com/trung020102/QuanLyPhongKhamVaDatLich into feature/user_info_booking
+[33m|[m [34m|[m [36m|[m [35m|[m[33m\[m  
+[33m|[m [34m|[m[33m_[m[36m|[m[33m_[m[35m|[m[33m/[m  
+[33m|[m[33m/[m[34m|[m [36m|[m [35m|[m   
+* [34m|[m [36m|[m [35m|[m [33m6abca8f[m Merge pull request #9 from trung020102/feature/edit+add_admin
+[36m|[m[34m\[m[34m|[m [36m|[m [35m|[m 
+[36m|[m [34m|[m[36m/[m [35m/[m  
+[36m|[m[36m/[m[34m|[m [35m|[m   
+[36m|[m * [35m|[m   [33m789be7d[m Merge branch 'develop' of https://github.com/trung020102/QuanLyPhongKhamVaDatLich into feature/edit+add_admin
+[36m|[m [1;33m|[m[36m\[m [35m\[m  
+[36m|[m [1;33m|[m[36m/[m [35m/[m  
+[36m|[m[36m/[m[1;33m|[m [35m|[m   
+* [1;33m|[m [35m|[m [33m640fe5b[m fix model and creart Entyti, Security.
+* [1;33m|[m [35m|[m [33mb16d53b[m fix model and creart Entyti, Security.
+* [1;33m|[m [35m|[m   [33mfa21a71[m Merge branch 'develop' of https://github.com/trung020102/QuanLyPhongKhamVaDatLich into develop
+[1;35m|[m[1;36m\[m [1;33m\[m [35m\[m  
+* [1;36m|[m [1;33m|[m [35m|[m [33m8806a1d[m fix stylecss.
+[1;36m|[m [1;36m|[m * [35m|[m [33mecb0694[m final
+[1;36m|[m [1;36m|[m * [35m|[m [33mcdb03f2[m Update doctor
+[1;36m|[m [1;36m|[m * [35m|[m [33m1d1b5d8[m fix mapping
+[1;36m|[m [1;36m|[m * [35m|[m [33mcc41faf[m chnage
+[1;36m|[m [1;36m|[m * [35m|[m [33m019ae6

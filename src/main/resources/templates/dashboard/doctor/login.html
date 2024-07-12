@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Quản lý phòng khám</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <link rel="stylesheet" href="/dashboard/css/mdb.min.css"/>
+</head>
+<body>
+<!--Main Navigation-->
+<header>
+    <style>
+        #intro {
+            background-image: url(https://i.pinimg.com/564x/3d/c5/54/3dc55441f4aa448de1d656811b41e753.jpg);
+            height: 110vh;
+        }
+        /* Height for devices larger than 576px */
+        @media (min-width: 992px) {
+            #intro {
+                margin-top: -58.59px;
+            }
+        }
+
+        .navbar .nav-link {
+            color: #fff !important;
+        }
+    </style>
+    <!-- Background image -->
+    <div id="intro" class="bg-image shadow-2-strong">
+        <div class="mask d-flex align-items-center h-auto" style="background-color: rgba(0, 0, 0, 0.8);">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-5 col-md-8">
+                        <form class="bg-white rounded shadow-5-strong p-5" th:action="@{/doctor/login}" method="post">
+                            <div class="d-flex align-items-center justify-content-center mb-3 pb-1">
+                                <span class="h1 fw-bold mb-0">ĐĂNG NHẬP</span>
+                            </div>
+                            <!-- Email input -->
+                            <div class="form-outline mb-4" data-mdb-input-init>
+                                <input type="email" id="form1Example1" class="form-control" name="username" required/>
+                                <label class="form-label" for="form1Example1">Email address</label>
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-outline mb-4" data-mdb-input-init>
+                                <input type="password" id="form1Example2" class="form-control" name="password" required/>
+                                <label class="form-label" for="form1Example2">Password</label>
+                            </div>
+
+                            <!-- 2 column grid layout for inline styling -->
+                            <div class="row mb-4">
+                                <!-- Submit button -->
+                                <button type="submit" class="btn btn-primary btn-block" data-mdb-ripple-init>ĐĂNG NHẬP</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Background image -->
+</header>
+<!--Main Navigation-->
+<script type="text/javascript" src="/dashboard/js/mdb.umd.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/client/layouts/base_layout"
+>
+
+<th:block layout:fragment="additional-link-at-head">
+    <link rel="stylesheet" href="/client/css/booking.css">
+</th:block>
+
+<th:block layout:fragment="main-content">
+    <section class="section">
+        <div class="container">
+            <div id="section-about" class="card">
+                <div class="form_heading">
+                    <p class="form_heading-text">Tạo hồ sơ bệnh nhân</p>
+                    <div class="form_heading-line"></div>
+                </div>
+                <div class="form_content">
+
+                    <div class="form_content-ask">Bạn đã đặt khám khám ở phòng khám Novena &#63;</div>
+                    <!-- Tab links -->
+                    <div class="tab_form">
+                        <a class="tablinks text-uppercase showLine" onclick="openForm(event, 'hasRecord')">
+                            Đã từng khám
+
+                        </a>
+                        <a class="tablinks text-uppercase showLine" onclick="openForm(event, 'notHasRecord')">
+                            Chưa từng khám
+                        </a>
+                    </div>
+
+                    <div class="tab_form-line" th:classappend="${error}? 'show' : (${newPatientTab}? 'show' : '')"></div>
+
+                    <!-- Tab content -->
+                    <div id="hasRecord" class="tabcontent" th:classappend="${error} ? 'show' : ''">
+                        <p class="text-uppercase heading">Vui lòng nhập mã số bệnh nhân</p>
+
+                        <form  th:object="${patient}" th:action="@{/client/booking/oldpatient}" method="post">
+                            <input th:classappend="${error} ? 'is-invalid' : ''" class="form_input form-control" type="text" name="patient_id" value="" placeholder="Nhập mã số bệnh nhân" required pattern="[1-9][0-9]*">
+                            <div th:if="${error}">
+                                <p th:text="${error}" style="color:red"></p>
+                            </div>
+
+                            <button class="form-btn text-uppercase" type="submit">Xác nhận</button>
+                        </form>
+                    </div>
+
+                    <div id="notHasRecord" class="tabcontent" th:classappend="${newPatientTab} ? 'show' : ''">
+                        <p class="text-uppercase heading">Nhập thông tin bệnh nhân</p>
+                        <form id="formSubmitted" th:object="${patient}" th:action="@{/client/booking/newpatient}" method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="hidden" id="patient_id" th:value="${patient_id}">
+
+                                    <div class="form-group text-left">
+                                        <label>Họ và tên <sup style="color: red;">*</sup></label>
+                                        <input type="text" th:errorclass="is-invalid" th:field="*{name}" name="name" value="" class="form-control rounded" placeholder="Nhập đầy đủ họ và tên">
+                                        <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <label>Số điện thoại <sup style="color: red;">*</sup></label>
+                                        <input type="text" th:errorclass="is-invalid" th:field="*{phone}" name="phone" value="" class="form-control rounded" placeholder="Nhập số điện thoại">
+                                        <div style="color: red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+                                    </div>
+
+                                    <div class="form-group text-left" style="margin-bottom: 34px;">
+                                        <label class="d-block">Giới tính</label>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gender" id="male" value="1">
+                                            <label class="form-check-label" for="male">
+                                                Nam
+                                                <i class="fa-solid fa-person" style="color: #0d3e91;"></i>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gender" id="female" value="0" checked>
+                                            <label class="form-check-label" for="female">
+                                                Nữ
+                                                <i class="fa-solid fa-person-dress" style="color: #ee20ad;"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <label>Ngày sinh</label>
+                                        <input th:errorclass="is-invalid" type="date" id="dateControl" th:field="*{birthday}" name="birthday" value="" class="form-control rounded">
+                                        <div style="color: red" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group text-left">
+                                        <label>Địa chỉ <sup style="color: red;">*</sup></label>
+                                        <input type="text" th:errorclass="is-invalid" th:field="*{address}" value="" class="form-control rounded" placeholder="Nhập địa chỉ nhà">
+                                        <div style="color: red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <label>Nghề nghiệp</label>
+                                        <input type="text" th:field="*{career}" value="" class="form-control rounded" placeholder="Nhập nghề nghiệp">
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <label>Số CMND/CCCD <sup style="color: red;">*</sup></label>
+                                        <input type="text" th:errorclass="is-invalid" th:field="*{citizen_number}" value="" class="form-control rounded" placeholder="Nhập số CMND hoặc số CCCD">
+                                        <div style="color: red" th:if="${#fields.hasErrors('citizen_number')}" th:errors="*{citizen_number}"></div>
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <label>Số bảo hiểm y tế</label>
+                                        <input type="text" th:field="*{insurance_number}" value="" class="form-control rounded" placeholder="Nhập số bảo hiểm y tế">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="form-btn text-uppercase" type="submit">Xác nhận</button>
+                        </form>
+                    </div>
+
+                    <!--Modal-->
+                    <div class="modal fade " id="patientModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="success_icon text-center">
+                                        <i class="fa-solid fa-circle-check fa-bounce" style="color: #11d49a;"></i>
+                                    </div>
+                                    <h5 class="text-center mt-5">Thông tin của bạn đã được lưu lại</h5>
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row" class="text-center">Mã bệnh nhân</th>
+                                            <td class="text-center"><span th:text="${patient_id}"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-center">Tên bệnh nhân</th>
+                                            <td class="text-center"><span th:text="${patient_name}"></span></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <p class="text-center">Chọn lịch khám sau
+                                        <span id="countdown" style="font-size: 1.3rem;color: red;font-weight: bold">5</span> giây
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</th:block>
+<th:block layout:fragment="additional-link-at-bottom">
+
+    <script>
+        function openForm(evt, situation) {
+            $(".tabcontent").hide();
+
+            $(".tablinks").removeClass("active");
+
+            $("#" + situation ).show();
+
+            $(evt.currentTarget).addClass("active");
+        }
+
+        $(document).ready(function() {
+            $(".showLine").click(function() {
+                $(".tab_form-line").show();
+            });
+        });
+
+        $(document).ready(function () {
+            var currentDate = new Date();
+            var year = currentDate.getFullYear();
+            var month = ("0" + (currentDate.getMonth() + 1)).slice(-2); // Months are zero-based
+            var day = ("0" + currentDate.getDate()).slice(-2);
+
+            var formattedDate = year + "-" + month + "-" + day;
+            $("#dateControl").val(formattedDate);
+        });
+
+    </script>
+
+    <script th:inline="javascript">
+        $(document).ready(function(){
+            // Kiểm tra xem form đã được submit thành công hay không
+            var formSubmitted = /*[[${formSubmitted}]]*/ false;
+            if (formSubmitted) {
+                $('#patientModal').modal('show');
+                startCountdown();
+            }
+
+            $('#patientModal').on('shown.bs.modal', function (e) {
+                startCountdown();
+            });
+
+            function startCountdown() {
+                var countDown = 5;
+                var interval = setInterval(function(){
+                    $('#countdown').text(countDown);
+                    countDown--;
+                    if(countDown < 0){
+                        clearInterval(interval);
+                        var patientID = $('#patient_id').val();
+                        window.location.href = "/client/booking/appointment?patientID=" + patientID;
+                    }
+                }, 1000);
+            }
+            // history.pushState(null, null, window.location.href);
+            // window.onpopstate = function () {
+            //     history.go(1);
+            // };
+
+        });
+    </script>
+
+</th:block>

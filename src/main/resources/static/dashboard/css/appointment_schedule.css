@@ -1,0 +1,337 @@
+
+.appoinment-body{
+
+    box-shadow: 0 0 10px rgba(0.5, 0.5, 0.5, 0.5);
+}
+
+.appoinment-heading{
+    font-size: 10px;
+    font-weight: 900;
+    color: #0c84ff;
+
+}
+.appoinment-search{
+
+
+}
+
+.appoinment-search-label{
+    font-weight: 0.6;
+    opacity: 0.7;
+    font-size: 20px;
+}
+
+.input-appoinment-search{
+    width: 30%;
+}
+
+.button-appoinment-search{
+   width: 70%;
+    height: 80%;
+    margin-left: 20px;
+    transition-duration: 0.4s;
+}
+
+.appoinment-search button {
+    width: 10%;
+    transition-duration: 0.4s;
+    margin-left: 10px;
+    border-radius: 8px;
+    background-color: #0c84ff;
+    color: #FFFFFF;
+    font-weight: 0.8;
+    border-color:#0c84ff ;
+}
+
+.appoinment-search button:hover {
+    background-color: #FFFFFF; /* Green */
+    color: #0c84ff;
+    border-color: #0c84ff;
+}
+.appoinment-main hr{
+    margin-top: 20px ;
+    margin-bottom: 20px;
+}
+
+
+
+.appoinment-info .button-send{
+
+    margin: 0 20px;
+}
+
+.appoinment-info button {
+    transition-duration: 0.4s;
+    margin-left: 10px;
+    border-radius: 8px;
+
+    color: #FFFFFF;
+    font-weight: 0.8;
+    border-color:#0c84ff ;
+    padding: 4px 16px;
+}
+.appoinment-info .button-create{
+    background-color: #ffffff;
+    margin-left: 3px ;
+    margin-right: 10px ;
+    border-color:  #0c84ff;
+}
+
+.appoinment-info .button-create i{
+   color:#0c84ff ;
+}
+.appoinment-info .button-create:hover {
+    background-color: #FFFFFF; /* Green */
+    color: #0c84ff;
+    border-color:  #0c84ff;
+}
+
+.appoinment-info .button-detail{
+    background-color: #F9AA33;
+    margin-left: 50px ;
+    border-color:  #F9AA33;
+}
+.appoinment-info .button-send {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+.appoinment-info .button-detail:hover {
+    background-color: #FFFFFF; /* Green */
+    color: #F9AA33;
+    border-color:  #F9AA33;
+}
+.appoinment-info .button-send:hover {
+    background-color: #FFFFFF; /* Green */
+    color: #28a745;
+    border-color:  #28a745;
+}
+.appoinment-info i{
+    color: #dc3545;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+/*-------------------*/
+/* Style the modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    top:2px; /* Đặt modal ở đỉnh cùng của màn hình */
+
+    left: 134px;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #343232CC; /* Black w/ opacity */
+}
+
+
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Close Button */
+.close {
+    color: #aaa;
+    position: absolute; /* Đặt vị trí tuyệt đối */
+    top: 10px; /* Khoảng cách từ phía trên */
+    right: 10px; /* Khoảng cách từ phía trái */
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+
+
+
+}
+
+.close:hover,
+.close:focus {
+
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content .modal-title{
+    font-weight: 0.6;
+    opacity: 0.7;
+    font-size: 30px;
+
+}
+
+.modal-content .modal-content-body{
+    width: 100%;
+    height: 100%;
+
+}
+
+.input-row {
+    display: flex;
+    margin: 30px 0;
+}
+
+.input-container {
+
+    flex: 1;
+    margin-left: 40px;
+    margin-right: 80px; /* Khoảng cách giữa các input */
+   /* width: 30%;*/
+}
+.input-container .input-list{
+    display: flex;
+}
+.input-item{
+    flex:1;
+
+}
+.input-item:last-child{
+    margin-right: -14px;
+}
+.input-container:last-child {
+    margin-right: 40px; /* Loại bỏ khoảng cách ở input cuối cùng */
+}
+
+label {
+    display: block; /* Hiển thị label trên một dòng mới */
+    margin-bottom: 5px; /* Khoảng cách giữa label và input */
+}
+
+.modal-content-body .title-extra{
+    font-weight: 0.6;
+    opacity: 0.7;
+    font-size: 16px;
+}
+
+/*modal send*/
+
+#sendModal .send-input{
+
+    width: 60%;
+}
+
+/* CSS cho button container */
+.button-container {
+    text-align: center; /* Canh lề giữa hai button */
+    margin-top: 30px;/* Khoảng cách giữa nội dung modal và button */
+    position: absolute;
+    bottom: 20px;
+    right: 20px; /* Khoảng cách từ trái qua */
+
+}
+
+/* CSS cho button */
+#sendBtn,
+#okBtn,
+#cancelBtn {
+
+    padding: 10px 20px; /* Đưa ra giữa giữa kích thước cho button */
+    margin:  10px; /* Khoảng cách giữa hai button */
+  /* border: none; !* Loại bỏ đường viền *!*/
+    border-radius: 5px; /* Bo tròn góc */
+    cursor: pointer; /* Biến con trỏ thành bàn phím khi di chuyển qua button */
+}
+
+/* CSS cho button Send */
+#sendBtn {
+    background-color: #4CAF50; /* Màu nền xanh lá cây */
+    color: white; /* Màu chữ trắng */
+}
+#okBtn{
+    background-color: #6b6262; /* Màu nền xanh lá cây */
+    color: white; /* Màu chữ trắng */
+    margin: 40px 40px -6px 40px ;
+
+}
+/* CSS cho button Cancel */
+#cancelBtn {
+    background-color: #f44336; /* Màu nền đỏ */
+    color: white; /* Màu chữ trắng */
+}
+
+ #sendBtn:hover {
+    background-color: #FFFFFF;
+    color: #4CAF50;
+    border-color: #4CAF50;
+}
+ #okBtn:hover {
+    background-color: #FFFFFF;
+    color:#6b6262;
+    border-color: #6b6262;
+}
+ #cancelBtn:hover {
+    background-color: #FFFFFF;
+    color: #f44336;
+    border-color: #f44336;
+}
+
+.modal-content-body{
+
+    margin-bottom: 50px;
+}
+
+/* Close Button */
+.send-close {
+    color: #aaa;
+    position: absolute; /* Đặt vị trí tuyệt đối */
+    top: 10px; /* Khoảng cách từ phía trên */
+    right: 10px; /* Khoảng cách từ phía trái */
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.send-close:hover,
+.send-close:focus {
+
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.hover-underline:hover {
+    text-decoration: underline;
+}
+
+/*phân trang*/
+
+.page-item.disabled .page-link {
+    pointer-events: none;
+    cursor: default;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+/*select*/
+.form-select {
+    border: none; /* Removes the border */
+    background-color: transparent; /* Makes the background transparent */
+    -webkit-appearance: none; /* Removes default appearance in WebKit browsers */
+    -moz-appearance: none; /* Removes default appearance in Mozilla browsers */
+    appearance: none; /* Removes default appearance in other browsers */
+}
+.disabled-button {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.disabled-button-send  {
+    background-color: #ccc; /* Gray background */
+    color: #666;           /* Gray text */
+    cursor: not-allowed;   /* Change cursor to not-allowed */
+    opacity: 0.8;          /* Slightly transparent */
+}
+
+.disabled-button-send i {
+    /*color: #999;          !* Gray icon color *!*/
+}
+
+.disabled-button-send:hover {
+    background-color: #ccc; /* Ensure background doesn't change on hover */
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/client/layouts/base_layout"
+>
+
+<th:block layout:fragment="additional-link-at-head">
+    <link rel="stylesheet" href="/client/css/style.css">
+    <link rel="stylesheet" href="/client/css/personalinfo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.8/sweetalert2.min.css" integrity="sha512-OWGg8FcHstyYFwtjfkiCoYHW2hG3PDWwdtczPAPUcETobBJOVCouKig8rqED0NMLcT9GtE4jw6IT1CSrwY87uw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</th:block>
+<th:block layout:fragment="main-content">
+    <section style="margin-top: 150px">
+        <div class="container my-5 shadow-lg p-3 mb-5 bg-white rounded">
+            <form th:object="${user}" th:action="@{/client/personalinfo/edit}" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-center mb-3 pb-1">
+                                    <span class="h1 fw-bold mb-0">THÔNG TIN CÁ NHÂN</span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="fullName" class="text-dark">Họ và tên<span class="require"> *</span></label>
+                                            <input th:field="*{fullName}" th:errorClass="is-invalid" type="text" class="form-control" id="fullName" placeholder="Nhập họ và tên">
+                                            <small th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" class="text-danger"></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="eMail" class="text-dark">Email<span class="require"> *</span></label>
+                                            <input type="email" th:field="*{email}" th:errorClass="is-invalid" class="form-control" id="eMail" placeholder="Nhập Email">
+                                            <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="phone" class="text-dark">Số điện thoại<span class="require"> *</span></label>
+                                            <input type="text" th:field="*{phone}" th:errorClass="is-invalid" class="form-control" id="phone" placeholder="Nhập số điện thoại">
+                                            <small th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label  class="text-dark">Giới tính<span class="require"> *</span></label>
+                                            <select style="height: 45px;" th:field="*{gender}" class="form-control" th:classappend="${#fields.hasErrors('gender')} ? 'is-invalid'">
+                                                <option th:value=true th:selected="${gender == true}">Nam</option>
+                                                <option th:value=false th:selected="${gender == false}">Nữ</option>
+                                            </select>
+                                            <small th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="text-danger"></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="address" class="text-dark">Địa chỉ</label>
+                                            <input type="text" th:field="*{address}" th:errorClass="is-invalid" class="form-control" id="address" placeholder="Nhập địa chỉ">
+                                            <small th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger"></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label class="text-dark">Ảnh</label>
+                                            <input type="file" name="avatar" class="form-control" style="height: 44px;" id="input-file">
+                                        </div>
+                                    </div>
+                                    <div style="padding-left: 0;" class="col-xl-12 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 ">
+                                            <img id="img-preview" th:src="${not #strings.isEmpty(avatarSrc)} ? ${avatarSrc} : '/client/uploads/avatars/nophoto.gif'" class="img border" style="width: 400px; height: 300px; object-fit: contain;" />
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="text-right">
+                                            <a href="/client/personalinfo"><button type="button"  name="submit" class="btn btn-dark">Hủy</button></a>
+                                            <button type="submit" name="submit" class="btn btn-submit">Cập nhật thông tin</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</th:block>
+
+<th:block layout:fragment="additional-link-at-bottom">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.8/sweetalert2.min.js" integrity="sha512-FbWDiO6LEOsPMMxeEvwrJPNzc0cinzzC0cB/+I2NFlfBPFlZJ3JHSYJBtdK7PhMn0VQlCY1qxflEG+rplMwGUg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const input = document.getElementById('input-file');
+        const image = document.getElementById('img-preview');
+
+        input.addEventListener('change', (e) => {
+            if (e.target.files.length) {
+                let fileUploadObject = e.target.files[0]
+                let src = URL.createObjectURL(fileUploadObject);
+                image.src = src;
+
+                if (fileUploadObject.type.startsWith('image/')) {
+                    let src = URL.createObjectURL(file);
+                    image.src = src;
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Định dạng file không hợp lệ!",
+                        text: "",
+                    });
+
+                    input.value = ''
+                    image.src = "/client/uploads/avatars/nophoto.gif"
+                }
+            }
+        });
+    </script>
+</th:block>

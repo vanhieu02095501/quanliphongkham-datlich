@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/client/layouts/base_layout"
+>
+
+<th:block layout:fragment="additional-link-at-head">
+    <link rel="stylesheet" href="/client/css/booking.css">
+    <link rel="stylesheet" th:href="@{/client/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css}"/>
+
+</th:block>
+
+<th:block layout:fragment="main-content">
+    <section class="section">
+        <div class="container">
+            <div id="section-appointment" class="card">
+                <div class="form_heading">
+                    <p class="form_heading-text">Thông tin đặt khám</p>
+                    <div class="form_heading-line"></div>
+                </div>
+                <div class="form_content">
+
+                    <div class="appointment_info">
+                        <div style="margin: 0 auto;text-align: center;font-size: 15px;margin-bottom: 25px">
+                            <span style="color: red;font-weight: bold">Lưu ý:  </span><span>Bạn chỉ có thể đặt khám trong 14 ngày, tính từ ngày hiện tại</span>
+
+                            <div class="row justify-content-center mt-4">
+                                <div class="col-md-6 d-flex justify-content-between p-3 color_booking">
+                                    <div class="d-flex justify-content-center">
+                                        <div id="full_booking"></div>
+                                        <span>Ngày đã full lượt khám</span>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center">
+                                        <div id="day_choosing"></div>
+                                        <span>Ngày đang chọn</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center mt-3">
+
+                            </div>
+                        </div>
+                        <form th:object="${appointment}" th:action="@{/client/booking/appointment}" method="post">
+                            <input type="hidden" th:field="*{patientId}">
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+                                    <div class="form-group text-left">
+                                        <label class="d-block ">Chọn ngày khám <sup style="color: red;">*</sup></label>
+
+                                        <div class="booking_date">
+                                            <input type="text" th:errorclass="is-invalid" th:field="*{appointmentDate}" name="phone" value=""
+                                                   class="form-control rounded date-picker px-2"
+                                                   placeholder="Chọn ngày khám" autocomplete="off">
+                                            <div style="color: red" th:if="${#fields.hasErrors('appointmentDate')}" th:errors="*{appointmentDate}"></div>
+
+                                        </div>
+
+                                        <i class="ui-icon-caret-2-n-s"></i>
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <label class="d-block">Chọn ca khám <sup style="color: red;">*</sup></label>
+                                        <div class="appointment-shift_wrap">
+                                            <label class="appointment-shift">
+                                                <input type="radio" class="shift" th:field="*{appointmentShift}" value="sang">
+                                                <span class="checkmark">Ca sáng
+                                  <span>(7h - 11h)</span>
+                                </span>
+                                            </label>
+                                            <label class="appointment-shift">
+                                                <input type="radio" class="shift" th:field="*{appointmentShift}" value="chieu">
+                                                <span class="checkmark">Ca chiều
+                                  <span>(13h - 17h)</span>
+                                </span>
+                                            </label>
+                                            <label class="appointment-shift">
+                                                <input type="radio" class="shift" th:field="*{appointmentShift}" value="toi">
+                                                <span class="checkmark">Ca tối
+                                  <span>(17h30 - 21h)</span>
+                                </span>
+                                            </label>
+
+                                        </div>
+                                            <div style="color: red" th:if="${#fields.hasErrors('appointmentShift')}" th:errors="*{appointmentShift}"></div>
+                                            <div style="color: red" th:text="${fullBooking}"></div>
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <label>Triệu chứng <sup style="color: red;">*</sup></label>
+                                        <textarea type="text" th:errorclass="is-invalid" th:field="*{symptom}" rows="4"
+                                                  class="form-control rounded symptom"
+                                                  placeholder="Mô tả triệu chứng bạn gặp phải"></textarea>
+                                        <div style="color: red" th:if="${#fields.hasErrors('symptom')}" th:errors="*{symptom}"></div>
+
+                                    </div>
+
+                                    <button class="booking-btn text-uppercase" type="submit">Đặt lịch</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</th:block>
+
+<th:block layout:fragment="additional-link-at-bottom">
+    <script th:src="@{/client/plugins/bootstrap-datepicker/bootstrap-datepicker.js}"></script>
+    <script>
+        let date = new Date();
+        let section = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 14);
+        $(document).ready(function () {
+
+            $.ajax({
+                url: '/client/getListOfDisabledDate',
+                type: "GET",
+                dataType: "json",
+                success: function (response) {let datesForDisable = response.map(function(item) {
+                    let appointmentDate = new Date(item.appointmentDate);
+                    return appointmentDate.toLocaleDateString('en-GB');
+                });
+
+                    $(".date-picker").datepicker({
+                        autoclose: true,
+                        format: "dd/mm/yyyy",
+                        startDate: "0d",
+                        endDate: section,
+                        orientation: "bottom",
+                        datesDisabled: datesForDisable,
+                    });
+                },
+            });
+        });
+
+        $('input[type="radio"]').change(function () {
+                if ($(this).is(":checked")) {
+                    $(".appointment-shift").removeClass("active");
+                    $(this).closest(".appointment-shift").addClass("active");
+                }
+            }
+        );
+    </script>
+</th:block>

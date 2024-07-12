@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xác minh Email</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 600px;
+      }
+
+      .alert {
+        margin-top: 20px;
+        padding: 30px;
+      }
+
+      .shadow-lg {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Thêm hiệu ứng box-shadow */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <th:block th:if="${result == 'TOKEN_NOT_FOUND'}">
+        <div class="alert alert-danger shadow-lg" role="alert">
+          <h4 class="alert-heading">Token không được tìm thấy!</h4>
+          <p>
+            Xin lỗi, token không được tìm thấy. Vui lòng đảm bảo bạn đã nhập
+            đúng token.
+          </p>
+          <a href="/client/home" class="btn btn-primary">Trở về trang chủ</a>
+        </div>
+      </th:block>
+
+      <th:block th:if="${result == 'USER_ALREADY_ACTIVATED'}">
+        <div class="alert alert-warning shadow-lg" role="alert">
+          <h4 class="alert-heading">Người dùng đã được kích hoạt!</h4>
+          <p>
+            Người dùng đã được kích hoạt trước đó. Bạn không cần phải xác minh
+            email lại.
+          </p>
+          <a href="/client/home" class="btn btn-primary">Trở về trang chủ</a>
+        </div>
+      </th:block>
+
+      <th:block th:if="${result == 'SUCCESS'}">
+        <div class="alert alert-success shadow-lg" role="alert">
+          <h4 class="alert-heading">Kích hoạt tài khoản thành công!</h4>
+          <p>
+            Tài khoản của bạn đã được kích hoạt thành công. Bạn có thể đăng nhập
+            ngay bây giờ.
+          </p>
+          <a href="/client/home" class="btn btn-primary">Trở về trang chủ</a>
+        </div>
+      </th:block>
+
+      <th:block th:if="${result == 'TOKEN_EXPIRED'}">
+        <div class="alert alert-danger shadow-lg" role="alert">
+          <h4 class="alert-heading">Token đã hết hạn!</h4>
+          <p>Xin lỗi, token đã hết hạn. Vui lòng thử lại với một token mới.</p>
+          <a th:href="@{/client/resend-verification-token(token=${token})}" class="btn btn-primary">Yêu cầu mã xác nhận mới</a>
+        </div>
+      </th:block>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+.modal {
+    position: fixed;
+    top: 16%;
+
+    left: 140px;
+    overflow: auto;
+}
+
+
+
+/*.modal-content {*/
+/*    background-color: #fefefe;*/
+/*    margin: 15% auto; !* 15% from the top and centered *!*/
+/*    padding: 20px;*/
+/*    border: 1px solid #888;*/
+/*    width: 50%; !* Could be more or less, depending on screen size *!*/
+/*}*/
+
+.serviceClose {
+    color: #aaa;
+    position: absolute; /* Đặt vị trí tuyệt đối */
+    top: 10px; /* Khoảng cách từ phía trên */
+    right: 10px; /* Khoảng cách từ phía trái */
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.openServiceModalBtn {
+    background-color: rgba(60,179,113,1);
+    border-radius: 10px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+}
+
+.openServiceModalBtn:hover {
+    background-color: rgba(60,149,113,1);
+}
+
+/*.table-button-container {*/
+/*    display: absolute;*/
+/*    top: 50%;*/
+/*    transform: translateY(-10%);*/
+/*    right: 0;*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*}*/
+
+.table-button-container button {
+    margin-right: 5px;
+}
+
+.button-cell {
+    position: relative;
+}
+
+.serviceEditClose {
+        color: #aaa;
+        position: absolute; /* Đặt vị trí tuyệt đối */
+        top: 10px; /* Khoảng cách từ phía trên */
+        right: 10px; /* Khoảng cách từ phía trái */
+        font-size: 30px;
+        font-weight: bold;
+        cursor: pointer;
+}

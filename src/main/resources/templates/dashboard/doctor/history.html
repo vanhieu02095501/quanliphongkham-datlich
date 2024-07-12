@@ -1,0 +1,159 @@
+<html lang="vi"
+
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/dashboard/layout/app">
+<head>
+
+    <link rel="stylesheet" href="/dashboard/css/history_exam.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <title>history_exam</title>>
+</head>
+<th:block layout:fragment="content-header">
+    <div class="col-sm-6">
+        <h1>Phiếu khám bệnh</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Lịch sử khám bệnh</li>
+        </ol>
+    </div>
+</th:block>
+
+<th:block layout:fragment="content-body">
+
+    <div class="record_content p-3" style="display: block">
+        <p class="badge badge-pill badge-dark w-auto m-1" style="font-size: 110%; display: table-cell;">1. Thông tin
+            bệnh nhân</p>
+        <div class="table-responsive">
+            <table class="table table-bordered mt-3">
+                <tr>
+                    <td>Tên bệnh nhân</td>
+                    <td th:text="${patientRecord.getPatient().name}"></td>
+                </tr>
+                <tr>
+                    <td>Ngày sinh</td>
+                    <td th:text="${#dates.format(patientRecord.getPatient().birthday, 'dd-MM-yyyy')}"></td>
+                </tr>
+                <tr>
+                    <td>Giới tính</td>
+                    <td th:text="${patientRecord.getPatient().isGender() == true ? 'Nam' : 'Nữ'}"></td>
+                </tr>
+                <tr>
+                    <td>Số CMND/CCCD</td>
+                    <td th:text="${patientRecord.getPatient().citizenNumber}"></td>
+                </tr>
+                <tr>
+                    <td>Địa chỉ</td>
+                    <td th:text="${patientRecord.getPatient().address}"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="doctor">
+            <p class="badge badge-pill badge-dark w-auto m-1" style="font-size: 110%; display: table-cell;">2. Thông tin
+                bác sĩ</p>
+
+            <div class="table-responsive">
+                <table class="table table-bordered mt-3">
+                    <tr>
+                        <td>Tên bác sĩ</td>
+                        <td th:text="${patientRecord.doctor.username}">Lê Bá Nhật Minh</td>
+                    </tr>
+                    <tr>
+                        <td>Chuyên khoa</td>
+                        <td th:text="${patientRecord.doctor.specialty}">Thần kinh học</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div>
+            <p class="badge badge-pill badge-dark w-auto m-1" style="font-size: 110%; display: table-cell;">3. Chẩn
+                đoán</p>
+            <div class="form-group">
+                          <textarea th:text="${patientRecord.diagnosis}" class="form-control mt-3"
+                                    rows="3" readonly>
+                        </textarea
+                        >
+            </div>
+        </div>
+
+      <div>
+        <p class="badge badge-pill badge-dark w-auto m-1" style="font-size: 110%; display: table-cell;">4. Ghi chú</p>
+        <div class="form-group">
+                          <textarea th:text="${patientRecord.note}" class="form-control mt-3"
+                                     rows="3" readonly>
+                        </textarea
+                        >
+        </div>
+      </div>
+        <div>
+            <p class="badge badge-pill badge-dark w-auto m-1" style="font-size: 110%; display: table-cell;">5. Dịch vụ
+                khám</p>
+            <div class="table-responsive">
+                <table class="table mt-3">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">Dịch vụ</th>
+                        <th scope="col">Giá</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="serviceDetail, iterStat : ${patientRecord.getServiceDetails()}">
+                        <td scope="row" th:text="${iterStat.count}"></td>
+                        <td th:text="${serviceDetail.medicalService.serviceName}"></td>
+                        <td th:text="${serviceDetail.medicalService.price}" id="format_price"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div>
+            <p class="badge badge-pill badge-dark w-auto m-1" style="font-size: 110%; display: table-cell;">6. Toa
+                thuốc</p>
+            <div class="table-responsive">
+                <table class="table mt-3">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">Tên thuốc</th>
+                        <th scope="col" class="text-center">Đơn vị tính</th>
+                        <th scope="col" class="text-center">Số lượng</th>
+                        <th scope="col">Cách dùng</th>
+                    </tr>
+                    </thead>
+                    <tbody th:each="prescriptionDetail, iterStat: ${patientRecord.getPrescription().getPrescriptionDetails()}">
+                    <tr>
+                        <td th:text="${iterStat.count}"></td>
+                        <td th:text="${prescriptionDetail.getMedicine().getMedicine_name()}"></td>
+                        <td class="text-center" th:text="${prescriptionDetail.getUnit()}"></td>
+                        <td class="text-center" th:text="${prescriptionDetail.getQuantity()}"></td>
+                        <td th:text="${prescriptionDetail.getDosage()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+<th:block layout:fragment="service-script">
+    <!--    <script src="/js/document.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        const priceElements = document.querySelectorAll('#format_price');
+        priceElements.forEach(element => {
+            const number = parseInt(element.textContent);
+
+            const formattedNumber = new Intl.NumberFormat('vi-VN').format(number);
+
+            element.textContent = formattedNumber + " VND";
+        });
+    </script>
+</th:block>
+</html>

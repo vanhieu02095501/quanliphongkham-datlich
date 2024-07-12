@@ -1,0 +1,87 @@
+.modal {
+    position: fixed;
+    top: 2px;
+    left: 140px;
+    overflow: auto;
+
+}
+
+.modal-title {
+    font-size: 30px;
+    color: black;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%; /* Could be more or less, depending on screen size */
+}
+
+.doctorClose {
+    color: #aaa;
+    position: absolute; /* Đặt vị trí tuyệt đối */
+    top: 10px; /* Khoảng cách từ phía trên */
+    right: 10px; /* Khoảng cách từ phía trái */
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-content .modal-title {
+    font-weight: 0.6;
+    opacity: 0.7;
+    font-size: 30px;
+
+}
+
+.modal-content .modal-content-body {
+    width: 100%;
+    height: 100%;
+
+}
+
+.table-button-container {
+    display: absolute;
+    top: 50%;
+    transform: translateY(-10%);
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.table-button-container button {
+    margin-right: 5px;
+}
+
+.button-cell {
+    position: relative;
+}
+
+.doctorEditClose {
+    color: #aaa;
+    position: absolute; /* Đặt vị trí tuyệt đối */
+    top: 10px; /* Khoảng cách từ phía trên */
+    right: 10px; /* Khoảng cách từ phía trái */
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.input-row {
+    display: flex;
+    margin: 30px 0;
+}
+
+.input-container {
+
+    flex: 1;
+    margin-left: 40px;
+    margin-right: 80px;
+}
+
+.modal-footer {
+
+}

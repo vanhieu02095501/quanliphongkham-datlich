@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/client/layouts/base_layout"
+>
+
+<th:block layout:fragment="additional-link-at-head">
+    <link rel="stylesheet" href="/client/css/faq.css" />
+</th:block>
+
+<th:block layout:fragment="main-content">
+    <section class="page-title bg-1">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block text-center">
+                        <h1 class="text-capitalize mb-5 text-lg">Những câu hỏi thường gặp</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div id="accordion">
+                <!--card 01 -->
+                <div class="card">
+                    <div
+                            class="card-header collapsed d-flex justify-content-between align-items-center"
+                            id="headingThree"
+                            data-toggle="collapse"
+                            data-target="#collapseThree"
+                            aria-expanded="false"
+                            aria-controls="collapseThree"
+                    >
+                        <h5 class="mb-0">Lợi ích khi sử dụng phần mềm đăng ký khám bệnh trực tuyến là gì</h5>
+                        <div class="chev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div
+                            id="collapseThree"
+                            class="collapse"
+                            aria-labelledby="headingThree"
+                            data-parent="#accordion"
+                    >
+                        <div data-test="card-body" class="card-body"><p>Đặt lịch khám bệnh theo hẹn, mọi lúc mọi nơi, mà không cần đến bệnh viện</p>
+                            <ul>
+                                <li>Không xếp hàng chờ đợi để lấy số tiếp nhận khám bệnhd</li>
+                                <li>Giảm thời gian chờ khám tại bệnh viện.</li>
+                                <li>Thanh toán trực tuyến từ xa, không sử dụng tiền mặt</li>
+                                <li>Nhận thông tin phiếu khám bệnh điện tử qua phần mềm</li>
+                                <li>Chủ động chọn lịch khám ( ngày khám, khung giờ khám, bác sỹ khám )</li>
+                                <li>Nhắc lịch tái khám, đặt lịch tái khám tự động</li>
+                                <li>Tra cứu kết quả khám chữa bệnh trực tuyến qua phần mềm.</li>
+                                <li>Thanh toán viện phí, chi phí khám chữa bệnh trực tuyến, mọi lúc mọi nơi</li>
+                                <li>Dễ dàng tiếp cận và nhận các thông báo mới, thông tin từ bệnh viện</li>
+                            </ul></div>
+                    </div>
+                </div>
+
+                <!--card 02 -->
+                <div class="card">
+                    <div
+                            class="card-header collapsed d-flex justify-content-between align-items-center"
+                            id="headingTwo"
+                            data-toggle="collapse"
+                            data-target="#collapseTwo"
+                            aria-expanded="false"
+                            aria-controls="collapseThree"
+                    >
+                        <h5 class="mb-0">Khi tôi đăng ký khám bệnh online thì có mất phí không?</h5>
+                        <div class="chev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div
+                            id="collapseTwo"
+                            class="collapse"
+                            aria-labelledby="headingTwo"
+                            data-parent="#accordion"
+                    >
+                        <div class="card-body">
+                            <ul>
+                                <li>Có phí tiện ích, khi sử dụng dịch vụ đăng ký khám bệnh trực tuyến qua phần mềm ( tương tự phí cước viễn thông qua tổng đài )</li>
+                                <li>Hiện tại chỉ mất phí khi đăng ký khám bệnh thành công, ngoài ra việc sử dụng ứng dụng và các tính năng khác là hoàn toàn miễn phí.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!--card 03 -->
+                <div class="card">
+                    <div
+                            class="card-header collapsed d-flex justify-content-between align-items-center"
+                            id="headingFour"
+                            data-toggle="collapse"
+                            data-target="#collapseFour"
+                            aria-expanded="false"
+                            aria-controls="collapseFour"
+                    >
+                        <h5 class="mb-0">Tôi có thể dùng phần mềm để đăng ký và lấy số thứ tự khám cho bệnh nhân khác không?</h5>
+                        <div class="chev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div
+                            id="collapseFour"
+                            class="collapse"
+                            aria-labelledby="headingFour"
+                            data-parent="#accordion"
+                    >
+                        <div class="card-body">
+                            <ul>
+                                <li>Phần mềm khuyến cáo người dân, tự sử dụng phần mềm để đăng ký khám bệnh cho bản thân. Để tự quản lý thông tin, hồ sơ bệnh, lịch sử khám chữa bệnh, kết quả khám chữa bệnh…</li>
+                                <li>Trường hợp nhờ người khác đăng ký qua phần mềm, hoặc chủ động đăng ký giúp người khác ( như thân nhân, họ hàng, ông bà cha mẹ, người thân, bạn bè , đồng nghiệp……) vẫn có thể được, nếu người đó thực sự không có khả năng tiếp cận phần mềm. Nhưng những trường hợp này là trái với quy định của phần mềm và an toàn bảo mật thông tin của ngành y, các vấn đề phát sinh, người đặt khám dùm người khác và người nhờ người khác đặt khám sẽ tự chịu trách nhiệm trước pháp luật.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!--card 04 -->
+                <div class="card">
+                    <div
+                            class="card-header collapsed d-flex justify-content-between align-items-center"
+                            id="headingFive"
+                            data-toggle="collapse"
+                            data-target="#collapseFive"
+                            aria-expanded="false"
+                            aria-controls="collapseFive"
+                    >
+                        <h5 class="mb-0">Phần mềm có đăng ký hỗ trợ khám 24/7 không</h5>
+                        <div class="chev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div
+                            id="collapseFive"
+                            class="collapse"
+                            aria-labelledby="headingFive"
+                            data-parent="#accordion"
+                    >
+                        <div class="card-body">
+                            <ul>
+                                <li>Phần mềm cho phép bạn thực hiện việc đăng ký khám vào bất kỳ thời điểm nào trong ngày và bất cứ ngày nào trong tuần, đảm bảo bạn có thể sử dụng Phần mềm để đăng ký khám bệnh mọi lúc&nbsp;mọi nơi, mà không cần phải đến trực tiếp&nbsp;bệnh viện để thực hiện.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!--card 05 -->
+                <div class="card">
+                    <div
+                            class="card-header collapsed d-flex justify-content-between align-items-center"
+                            id="headingSix"
+                            data-toggle="collapse"
+                            data-target="#collapseSix"
+                            aria-expanded="false"
+                            aria-controls="collapseSix"
+                    >
+                        <h5 class="mb-0">Tôi đến bệnh viện trễ hơn so với giờ khám đã đăng ký, vậy tôi có được khám hay không?</h5>
+                        <div class="chev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div
+                            id="collapseSix"
+                            class="collapse"
+                            aria-labelledby="headingSix"
+                            data-parent="#accordion"
+                    >
+                        <div class="card-body">
+                            <ul>
+                                <li>
+                                    Trường hợp bạn đến trễ so với giờ hẹn trên phiếu khám bệnh, bạn vẫn có thể đến bệnh viện để được thăm khám, nhưng mọi sự tiếp nhận và thời gian khám bệnh sẽ theo sự sắp xếp của bệnh viện, tùy vào tình hình thực tế tại bệnh viện và phòng khám lúc đó.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!--card 06 -->
+                <div class="card">
+                    <div
+                            class="card-header collapsed d-flex justify-content-between align-items-center"
+                            id="headingSeven"
+                            data-toggle="collapse"
+                            data-target="#collapseSeven"
+                            aria-expanded="false"
+                            aria-controls="collapseSeven"
+                    >
+                        <h5 class="mb-0">Tôi có thể thay đổi thông tin khám đã đặt qua phần mềm hay không?</h5>
+                        <div class="chev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div
+                            id="collapseSeven"
+                            class="collapse"
+                            aria-labelledby="headingSeven"
+                            data-parent="#accordion"
+                    >
+                        <div class="card-body">
+                            <ul>
+                                <li>Bạn không thể thay đổi thông tin khám trên phiếu khám bệnh đã đặt thành công.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!--card 07 -->
+                <div class="card">
+                    <div
+                            class="card-header collapsed d-flex justify-content-between align-items-center"
+                            id="headingEight"
+                            data-toggle="collapse"
+                            data-target="#collapseEight"
+                            aria-expanded="false"
+                            aria-controls="collapseEight"
+                    >
+                        <h5 class="mb-0">Nếu bác sĩ thay đổi lịch khám, tôi phải làm sao?</h5>
+                        <div class="chev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div
+                            id="collapseEight"
+                            class="collapse"
+                            aria-labelledby="headingEight"
+                            data-parent="#accordion"
+                    >
+                        <div class="card-body">
+                            <div data-test="card-body" class="card-body"><p>Khi bác sĩ thay đổi lịch khám, phần mềm sẽ gửi thông báo cho bạn qua tin nhắn sms, email và trên ứng dụng.Khi nhận được thông báo về sự thay đổi. Bạn có thể:</p>
+                                <ul>
+                                    <li>Hủy Phiếu Khám Bệnh để nhận lại tiền khám theo quy định hoàn tiền.</li>
+                                    <li>Vẫn giữ nguyên thông tin trên Phiếu Khám Bệnh, và điều này đồng nghĩa với việc bạn chấp nhận khám với bác sĩ thay thế mà bệnh viện đã sắp xếp.</li>
+                                    <li>Thay đổi thông tin khám trên phiếu khám bệnh, bằng cách: Đăng nhập phần mềm &gt; Thông Tin Tài Khoản &gt; Quản lý phiếu khám bệnh &gt; chọn vào phiếu khám bệnh bị thay đổi lịch khám &gt; bấm "Chỉnh sửa".</li>
+                                </ul>
+                                <p>Việc thay đổi thông tin trên phiếu khám bệnh phải được thực hiện theo Quy định chỉnh sửa thông tin trên phiếu khám bệnh.</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- card 08 -->
+                <div class="card">
+                    <div
+                            class="card-header collapsed d-flex justify-content-between align-items-center"
+                            id="headingNine"
+                            data-toggle="collapse"
+                            data-target="#collapseNine"
+                            aria-expanded="false"
+                            aria-controls="collapseNine"
+                    >
+                        <h5 class="mb-0">Đối tượng bệnh nhân nào có thể sử dụng phần mềm</h5>
+                        <div class="chev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div
+                            id="collapseNine"
+                            class="collapse"
+                            aria-labelledby="headingNine"
+                            data-parent="#accordion"
+                    >
+                        <div class="card-body">
+                            <div data-test="card-body" class="card-body"><p>Tất cả&nbsp;người bệnh&nbsp;đều có thể sử dụng phần mềm&nbsp;để đăng ký khám bệnh trực tuyến,nếu đủ điều kiện tiếp cận và sử dụng phần mềm.</p>
+                                <p>Phần mềm&nbsp;phù hợp&nbsp;cho những người bệnh&nbsp;có kế hoạch khám chữa&nbsp;bệnh chủ động, hoặc tình trạng bệnh&nbsp;KHÔNG quá khẩn cấp.</p>
+                                <p>Trong trường hợp CẤP CỨU, người nhà nên đưa người bệnh&nbsp;đến cơ sở y tế gần nhất hoặc gọi số cấp cứu 115 để được hỗ trợ.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- card 09 -->
+                <div class="card">
+                    <div
+                            class="card-header collapsed d-flex justify-content-between align-items-center"
+                            id="headingTen"
+                            data-toggle="collapse"
+                            data-target="#collapseTen"
+                            aria-expanded="false"
+                            aria-controls="collapseTen"
+                    >
+                        <h5 class="mb-0">Có thể đăng ký khám bệnh trong khoảng thời gian nào</h5>
+                        <div class="chev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div
+                            id="collapseTen"
+                            class="collapse"
+                            aria-labelledby="headingTen"
+                            data-parent="#accordion"
+                    >
+                        <div class="card-body">
+                            <p>Bạn có thể đăng ký khám bệnh qua phần mềm, mọi lúc mọi nơi. Có thể đặt lịch hẹn khám bệnh trước ngày khám đến 30 ngày.&nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- card 10-->
+                <div class="card">
+                    <div
+                            class="card-header collapsed d-flex justify-content-between align-items-center"
+                            id="headingEleven"
+                            data-toggle="collapse"
+                            data-target="#collapseEleven"
+                            aria-expanded="false"
+                            aria-controls="collapseEleven"
+                    >
+                        <h5 class="mb-0">Tôi sẻ được khám bệnh vào đúng thời gian đã chọn, sau khi đăng ký khám bệnh qua phần mềm đúng không</h5>
+                        <div class="chev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div
+                            id="collapseEleven"
+                            class="collapse"
+                            aria-labelledby="headingEleven"
+                            data-parent="#accordion"
+                    >
+                        <div class="card-body">
+                            <p>Trả lời: Có thể.</p>
+                            <p>Thời gian bạn chọn khi đăng ký khám, được xem là thời gian khám bệnh dự kiến. Do đặc thù của công tác khám chữa bệnh, sẽ không thể chính xác thời gian khám 100%.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</th:block>
+
+<th:block layout:fragment="additional-link-at-bottom">
+    <script th:src="@{/client/js/faqs.js}"></script>
+</th:block>

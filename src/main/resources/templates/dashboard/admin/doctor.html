@@ -1,0 +1,227 @@
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/dashboard/layout/app"
+>
+
+<head>
+    <link rel="stylesheet" href="/dashboard/css/doctor.css" />
+    <title>Doctor List</title>
+</head>
+
+<th:block layout:fragment="content-header">
+    <div class="col-sm-6">
+        <h1>Quản lý nhân sự</h1>
+    </div>
+
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Quản lý nhân sự</li>
+        </ol>
+    </div>
+</th:block>
+
+<th:block layout:fragment="content-body">
+
+    <button class="btn btn-success openDoctorRegister" style="margin-bottom: 10px">
+        Thêm tài khoản bác sĩ
+    </button>
+
+    <div id="example3_wrapper" class="dataTables_wrapper dt-bootstrap4">
+        <!--body-->
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="example2"
+                       class="table table-bordered table-hover dataTable dtr-inline"
+                       aria-describedby="example2_info">
+                    <thead>
+                    <tr>
+                        <th class="sorting"
+                            aria-label="Rendering engine: activate to sort column descending">
+                            STT
+                        </th>
+                        <th class="sorting">Email</th>
+                        <th class="sorting">Mật khẩu</th>
+                        <th class="sorting">Operation</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add doctor modal button-->
+    <button class="btn btn-success openDoctorModalBtn" style="margin-bottom: 10px">
+        Thêm thông tin bác sĩ
+    </button>
+
+    <!-- Add doctor modal -->
+    <div id="doctorModal" class="modal">
+        <div class="modal-content">
+            <span class="doctorClose" data-dismiss="modal">&times;</span>
+            <p class="modal-title">Thông tin bác sĩ</p>
+            <div class="modal-content-body">
+                <hr>
+
+                <div class="input-row">
+                    <div class="input-container">
+                        <label for="doctor_name">Họ và tên</label>
+                        <input class="form-control" type="text" id="doctor_name" placeholder="Nhập họ và tên">
+                    </div>
+                    <div class="input-container">
+                        <label for="doctor_specialty">Chuyên môn</label>
+                        <input class="form-control" type="text" id="doctor_specialty" placeholder="Nhập chuyên môn">
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-container">
+                        <label for="doctor_workplace">Nơi công tác</label>
+                        <input class="form-control" type="text" id="doctor_workplace" placeholder="Nhập nơi công tác">
+                    </div>
+
+                    <div class="input-container">
+                        <label for="doctor_diploma">Bằng cấp</label>
+                        <input class="form-control" type="text" id="doctor_diploma" placeholder="Nhập bằng cấp">
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <label for="doctor_introduction">Giới thiệu</label>
+                    <textarea class="form-control" rows="3" id="doctor_introduction"
+                              placeholder="Nhập giới thiệu"></textarea>
+                </div>
+
+                <div class="button-container">
+                    <button id="create_Doctor_Btn" type="button" class="btn btn-primary"
+                            style="margin-left: 40%; margin-top: 20px;">Xác nhận
+                    </button>
+                    <button id="cancelBtn" type="button" class="btn btn-danger" data-dismiss="modal"
+                            style="margin-left: 20px; margin-top: 20px">Hủy bỏ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+        <!--body-->
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="example1"
+                       class="table table-bordered table-hover dataTable dtr-inline"
+                       aria-describedby="example2_info">
+                    <thead>
+                    <tr>
+                        <th class="sorting"
+                            aria-label="Rendering engine: activate to sort column descending">
+                            STT
+                        </th>
+                        <th class="sorting">Họ và tên</th>
+                        <th class="sorting">Chuyên môn</th>
+                        <th class="sorting">Bằng cấp</th>
+                        <th class="sorting">Nơi công tác</th>
+                        <th class="sorting">Giới thiệu</th>
+                        <th class="sorting">Operation</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit doctor modal -->
+    <div id="doctorEditModal" class="modal">
+        <div class="modal-content">
+            <span class="doctorEditClose">&times;</span>
+            <p class="modal-title">Cập nhật thông tin bác sĩ</p>
+            <div class="modal-content-body">
+                <hr>
+
+                <div class="input-row">
+                    <div class="input-container">
+                        <input type="hidden" id="doctor_id_edit">
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-container">
+                        <label for="doctor_name_edit">Họ và tên</label>
+                        <input class="form-control" type="text" id="doctor_name_edit" placeholder="Nhập họ và tên">
+                    </div>
+                    <div class="input-container">
+                        <label for="doctor_specialty_edit">Chuyên môn</label>
+                        <input class="form-control" type="text" id="doctor_specialty_edit"
+                               placeholder="Nhập chuyên môn">
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-container">
+                        <label for="doctor_diploma_edit">Bằng cấp</label>
+                        <input class="form-control" type="email" id="doctor_diploma_edit" placeholder="Nhập bằng cấp">
+                    </div>
+
+                    <div class="input-container">
+                        <label for="doctor_workplace_edit">Nơi công tác</label>
+                        <input class="form-control" type="text" id="doctor_workplace_edit"
+                               placeholder="Nhập nơi công tác">
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-container">
+                        <label for="doctor_introduction_edit">Giới thiệu</label>
+                        <textarea class="form-control" rows="3" id="doctor_introduction_edit"
+                                  placeholder="Nhập giới thiệu"></textarea>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button id="okEditBtn" type="button" class="btn btn-primary"
+                            style="margin-left: 40%; margin-top: 20px;">Xác nhận
+                    </button>
+                    <button id="cancelEditBtn" type="button" class="btn btn-danger"
+                            style="margin-left: 20px; margin-top: 20px">Hủy bỏ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--    Delete confirm modal-->
+    <div id="confirmDeleteModal" class="modal" tabindex="-1" role="dialog" style="width: 75%;">
+        <div class="modal-content" role="document">
+
+                <div class="modal-header">
+                    <div class="card-header">
+                        Warning
+                    </div>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-content-body">
+                    <h1 class="modal-title">Bạn có chắc là muốn xóa vị bác sĩ này không? (Tác vụ này không thể bị hoàn tác) </h1>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="confirmDelete">Xóa</button>
+                    <button type="button" class="btn btn-outline-primary" id="cancelDelete">Hủy</button>
+                </div>
+        </div>
+    </div>
+</th:block>
+
+<th:block layout:fragment="doctor-script">
+    <script src="/dashboard/js/doctor.js"></script>
+</th:block>
+</html>

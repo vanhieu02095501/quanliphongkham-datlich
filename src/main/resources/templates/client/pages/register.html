@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/client/layouts/base_layout"
+>
+
+<th:block layout:fragment="additional-link-at-head">
+    <link rel="stylesheet" href="/client/css/style.css">
+    <link rel="stylesheet" href="/client/css/login.css">
+</th:block>
+<th:block layout:fragment="main-content">
+    <section class="h-auto form-login">
+        <div class="container py-5 h-auto">
+            <div class="row d-flex justify-content-center align-items-center h-auto">
+                <div class="col col-xl-10">
+                    <div class="card shadow-lg p-3 mb-5 bg-white rounded custom-rounded">
+                        <div class="row g-0">
+
+                            <div class="col-md-6 col-lg-12 d-flex align-items-center">
+                                <div class="card-body p-4 p-lg-5 text-black">
+
+                                    <form th:object="${user}" method="post" th:action="@{/client/register}">
+                                        <!-- <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /> -->
+                                        <div class="d-flex align-items-center justify-content-center mb-3 pb-1">
+                                            <span class="h1 fw-bold mb-0">ĐĂNG KÝ</span>
+                                        </div>
+
+                                        <h5 class="fw-normal mb-3 pb-3 text-center" style="letter-spacing: 1px;">Đăng ký
+                                            nhanh chóng và dễ dàng</h5>
+
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <label class="form-label text-dark" >Họ và tên <sup style="color: red;">*</sup></label>
+                                            <input type="text" th:errorClass="is-invalid" th:field="*{fullName}" class="form-control form-control-lg"
+                                                    autofocus/>
+                                            <div class="invalid-feedback" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></div>
+                                        </div>
+
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <label class="form-label text-dark">Email <sup style="color: red;">*</sup></label>
+                                            <input type="text" th:errorClass="is-invalid" th:field="*{email}" class="form-control form-control-lg"
+                                                   />
+                                            <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+
+                                        </div>
+
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <label class="form-label text-dark" >Mật khẩu <sup style="color: red;">*</sup></label>
+                                            <input type="password" th:errorClass="is-invalid" th:field="*{password}"
+                                                   class="form-control form-control-lg"/>
+                                            <div class="invalid-feedback" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+                                        </div>
+
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <label class="form-label text-dark">Nhập lại mật
+                                                khẩu <sup style="color: red;">*</sup></label>
+                                            <input type="password" th:errorClass="is-invalid" th:field="*{rePassword}"
+                                                   class="form-control form-control-lg" />
+                                            <div class="invalid-feedback" th:if="${#fields.hasErrors('rePassword')}" th:errors="*{rePassword}"></div>
+                                        </div>
+
+                                        <div class="pt-1 mb-4">
+                                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-lg btn-block btn-submit" type="submit">Đăng Ký</button>
+                                        </div>
+
+                                        <p class="mb-n3 pb-lg-0" style="color: #393f81;">Bạn đã có tài khoản?
+                                            <a href="/client/login" style="text-decoration: underline">Đăng nhập ngay</a>
+                                        </p>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</th:block>

@@ -1,0 +1,59 @@
+<html
+  lang="vi"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="/dashboard/layout/app"
+>
+
+<head>
+    <link rel="stylesheet" href="/client/plugins/year-picker/yearpicker.css">
+</head>
+
+<th:block layout:fragment="content-header">
+    <div class="col-sm-6">
+      <h1>Thống kê doanh thu</h1>
+    </div>
+
+    <div class="col-sm-6">
+      <ol class="breadcrumb float-sm-right">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active">Thống kê doanh thu</li>
+      </ol>
+    </div>
+  </th:block>
+
+  <th:block layout:fragment="content-body">
+    <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+      <!--body-->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="far fa-chart-bar"></i>
+                THỐNG KÊ DOANH THU
+              </h3>
+              <div class="card-tools">
+               <input id="year-picker" class="yearpicker" type="text" readonly>
+              </div>
+            </div>
+            <div class="card-body">
+              <div
+                id="interactive"
+                style="height: 450px; padding: 0px; position: relative"
+              >
+                <canvas id="line-chart" style="width: 100%;"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </th:block>
+
+  <th:block layout:fragment="service-script">
+    <script src="/client/plugins/year-picker/yearpicker.js"></script>
+    <script src="/client/plugins/chart-js/chart.min.js" type="module"></script>
+    <script type="module" src="/dashboard/js/statistics/revenue-statistics.js"></script>
+  </th:block>
+</html>

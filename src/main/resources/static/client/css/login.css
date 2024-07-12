@@ -1,0 +1,39 @@
+.form-login{
+    background-color: #fff;
+    margin-top: 28px;
+}
+/* .form-group{
+    border-bottom: 1px solid #fff;
+    margin-top: 4px;
+    margin-bottom: 20px;
+    display: flex;
+} */
+
+ #eye {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    top: 80px;
+    right: 76px;
+    padding-right: 1px;
+    cursor: pointer;
+}
+.custom-rounded{
+    border-radius: 1rem;
+}
+.btn-submit{
+    background-color: #223a66;
+    color: #fff;
+}
+.error {
+    color: red;
+}
+
+.input-error {
+    border: 1px solid red;
+}
+.btn:hover{
+   background-color: #e12454;
+    color: #fff;
+}

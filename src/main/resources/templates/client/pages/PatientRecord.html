@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/client/layouts/base_layout"
+>
+
+<th:block layout:fragment="additional-link-at-head">
+    <link rel="stylesheet" href="/client/css/record.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</th:block>
+<th:block layout:fragment="main-content">
+    <section class="section">
+        <div class="container-fluid" th:if="${patient!= null}">
+            <div id="section-history" class="card">
+                <div class="form_heading">
+                    <p class="form_heading-text">Hồ sơ bệnh án và Lịch sử khám</p>
+                </div>
+                <div class="modal-body">
+                    <div class="patient_info">
+                            <span class="badge badge-pill badge-info mb-2"
+                                  style="background-color: #f2408d; color: white">Thông tin bệnh nhân</span>
+
+                        <div class="row" id="element" th:data-id="${patient.getId()}">
+                            <div class="col-md-6">
+                                <div class="flex-wrap d-flex align-items-center">
+                                    <div style="width: 25px">
+                                        <i class="fa-regular fa-user" style="color: #223a66"></i>
+                                    </div>
+                                    <span class="ml-2" style="width: 100px">Họ tên: </span>
+                                    <span th:text="${patient.name}"></span>
+                                </div>
+
+                                <div class="flex-wrap d-flex align-items-center">
+                                    <div style="width: 25px">
+                                        <i class="fa-solid fa-cake-candles" style="color: #223a66"></i>
+                                    </div>
+                                    <span class="ml-2" style="width: 100px">Ngày sinh: </span>
+                                    <span th:text="${#dates.format(patient.getBirthday(), 'dd-MM-yyyy')}"></span>
+                                </div>
+
+                                <div class="flex-wrap d-flex align-items-center">
+                                    <div style="width: 25px">
+                                        <i class="fa-regular fa-id-card" style="color: #223a66"></i>
+                                    </div>
+                                    <span class="ml-2" style="width: 100px">Số CCCD: </span>
+                                    <span th:text="${patient.getCitizenNumber()}"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="flex-wrap d-flex align-items-center">
+                                    <div style="width: 25px">
+                                        <i class="fa-solid fa-briefcase" style="color: #223a66"></i>
+                                    </div>
+                                    <span class="ml-2" style="width: 100px">Nghề nghiệp: </span>
+                                    <span th:text="${patient.getCareer()}"></span>
+                                </div>
+                                <div class="flex-wrap d-flex align-items-center">
+                                    <div style="width: 25px">
+                                        <i class="fa-solid fa-house" style="color: #223a66"></i>
+                                    </div>
+                                    <span class="ml-2" style="width: 100px">Địa chỉ: </span>
+                                    <span th:text="${patient.getAddress()}"></span>
+                                </div>
+                                <div class="flex-wrap d-flex align-items-center">
+                                    <div style="width: 25px">
+                                        <i class="fa-solid fa-venus-mars" style="color: #223a66"></i>
+                                    </div>
+                                    <span class="ml-2" style="width: 100px">Giới tính: </span>
+                                    <span th:text="${patient.isGender() == true ? 'Nam' : 'Nữ'}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="patient_appointment">
+                            <span class="badge badge-pill badge-info mt-4 mb-4"
+                                  style="background-color: #f2408d; color: white">Lịch chưa khám</span>
+                        <div th:if="${#lists.isEmpty(appointments)}">
+                            <div class="alert alert-danger" role="alert" style="text-align: center">
+                                Bạn chưa có lịch chưa khám nào.
+                            </div>
+                        </div>
+                        <div id="unexamined-schedules" class="row" th:unless="${#lists.isEmpty(appointments)}">
+                            <div th:id="'schedule_not_finish_' + ${appointment.getId()}" class="col-md-4 mb-4" th:each="appointment : ${appointments}">
+                                <div class="patient_appointment_item d-flex">
+                                    <div class="appointment_number d-flex flex-column justify-content-center align-items-center">
+                                        <span class="small">Số thứ tự</span>
+                                        <span class="font-weight-bold"
+                                              style="color: #11d49a; font-size: 3rem" th:text="${appointment.getOrderNumber()}"></span>
+                                    </div>
+
+                                    <div class="appointment_line"></div>
+                                    <div class="appointment_info d-flex justify-content-center flex-column" style="position: relative;">
+                                        <div>
+                                            <span class="ml-2" style="width: 100px; display: inline-block">Ngày khám: </span>
+                                            <span class="font-weight-bold" th:text="${#dates.format(appointment.appointmentDate, 'dd-MM-yyyy')}">23-04-2002</span>
+                                        </div>
+                                        <div >
+                                                <span class="ml-2"
+                                                      style="width: 100px; display: inline-block">Ca khám: </span>
+                                            <span class="font-weight-bold" th:text="${appointment.appointmentShift}"></span>
+                                            <div th:data-id="${appointment.getId()}" class="area-cancel" style="position: absolute; top: -10px; right: -5px;">
+                                                <i class="fa-solid fa-calendar-xmark" style="font-size: 25px;"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="patient_appointment-record">
+                            <span class="badge badge-pill badge-info mt-4 mb-4"
+                                  style="background-color: #f2408d; color: white">Lịch sử lịch khám</span>
+
+                        <div class="appointment_search">
+                            <label class="d-block">Chọn khoảng thời gian khám để xem hồ sơ bệnh án</label>
+
+                            <div style="width: 80%">
+                                <form id="formSearch" th:action="@{'/client/record/PatientRecord/' + ${patient.getId()}}" method="get" style="display: flex">
+                                    <input type="text" name="dateranges" id="daterange" th:value="${value}" class="form-control w-50 rounded px-2"/>
+                                    <button type="submit" id="search-btn" class="btn btn-flat btn-info" style="margin-left: 6px">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <div th:if="${#lists.isEmpty(patientRecords)}">
+                                <div class="alert alert-danger" role="alert" style="text-align: center; margin-top: 10px;">
+                                    Bạn chưa có lịch sử bệnh án trong khoảng thời gian trên.
+                                </div>
+                            </div>
+                            <div class="appointment_history mt-4" th:unless="${#lists.isEmpty(patientRecords)}">
+                                <div class="tab_left" >
+                                    <div th:each="patientRecord, iterStat : ${patientRecords}">
+                                        <button class="record" th:classappend="${iterStat.index == 0} ? 'active' : ''"
+                                                th:onclick="'openRecord(event, ' + ${patientRecord.getId()} + ')'">
+                                            <div>
+                                                <span class="ml-2" style="width: 100px">Mã bệnh án: </span>
+                                                <span class="font-weight-bold" th:text="${patientRecord.getId()}"></span>
+                                            </div>
+                                            <div>
+                                                <span class="ml-2" style="width: 100px">Ngày khám: </span>
+                                                <span class="font-weight-bold" th:text="${#dates.format(patientRecord.getCreatedAt(), 'dd-MM-yyyy')}"></span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div th:each="patientRecord : ${patientRecords}">
+                                    <div th:id="${patientRecord.getId()}" class="record_content p-3" style="display: block" >
+                                        <div class="doctor">
+                                            <p class="badge badge-pill badge-dark w-auto m-1 font-size">1. Thông tin bác sĩ</p>
+
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered mt-3">
+                                                    <tr>
+                                                        <td>Tên bác sĩ</td>
+                                                        <td th:text="${patientRecord.getDoctor().getUsername()}"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Chuyên khoa</td>
+                                                        <td th:text="${patientRecord.getDoctor().getSpecialty()}"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Giới thiệu</td>
+                                                        <td th:text="${patientRecord.getDoctor().getIntroduction()}"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <p class="badge badge-pill badge-dark w-auto m-1 font-size">2. Chẩn đoán</p>
+                                            <div class="form-group">
+                          <textarea class="form-control mt-3" id="exampleFormControlTextarea1" rows="3" readonly
+                                    th:text="${patientRecord.getDiagnosis()}">
+
+                        </textarea
+                        >
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="badge badge-pill badge-dark w-auto m-1 font-size">3. Ghi chú</p>
+                                            <div class="form-group">
+                                           <textarea class="form-control mt-3" rows="3" readonly th:text="${patientRecord.getNote()}"></textarea>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="badge badge-pill badge-dark w-auto m-1 font-size">4. Dịch vụ khám</p>
+                                            <div th:if="${#lists.isEmpty(patientRecord.getServiceDetails())}">
+                                                <div class="alert alert-danger" role="alert" style="text-align: center; margin-top: 10px;">
+                                                    Đang cập nhật.
+                                                </div>
+                                            </div>
+                                            <div class="table-responsive" th:unless="${#lists.isEmpty(patientRecord.getServiceDetails())}">
+                                                <table class="table mt-3">
+                                                    <thead class="thead-light">
+                                                    <tr>
+                                                        <th scope="col">STT</th>
+                                                        <th scope="col">Dịch vụ</th>
+                                                        <th scope="col">Giá</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody >
+                                                    <tr th:each="serviceDetail, iterStat : ${patientRecord.getServiceDetails()}">
+                                                        <th scope="row" th:text="${iterStat.count}"></th>
+                                                        <td th:text="${serviceDetail.medicalService.serviceName}"></td>
+                                                        <td th:text="${serviceDetail.medicalService.price}" id="format_price"></td>
+                                                    </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="badge badge-pill badge-dark w-auto m-1 font-size">5. Toa thuốc</p>
+                                            <div th:if="${#lists.isEmpty(patientRecord.getPrescription())}">
+                                                <div class="alert alert-danger" role="alert" style="text-align: center; margin-top: 10px;">
+                                                    Đang cập nhật.
+                                                </div>
+                                            </div>
+                                            <div class="table-responsive" th:unless="${#lists.isEmpty(patientRecord.getPrescription())}">
+                                                <table class="table mt-3">
+                                                    <thead class="thead-light">
+                                                    <tr>
+                                                        <th scope="col">STT</th>
+                                                        <th scope="col">Tên thuốc</th>
+                                                        <th scope="col">Đơn vị tính</th>
+                                                        <th scope="col">Số lượng</th>
+                                                        <th scope="col">Cách dùng</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody th:each="prescriptionDetail, iterStat: ${patientRecord.getPrescription().getPrescriptionDetails()}">
+                                                    <tr>
+                                                        <td th:text="${iterStat.count}"></td>
+                                                        <td th:text="${prescriptionDetail.getMedicine().getMedicine_name()}"></td>
+                                                        <td th:text="${prescriptionDetail.getUnit()}"></td>
+                                                        <td th:text="${prescriptionDetail.getQuantity()}"></td>
+                                                        <td th:text="${prescriptionDetail.getDosage()}"></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div th:unless="${#lists.isEmpty(listCancelAppointment)}">
+                        <div class="patient_appointment">
+                            <span class="badge badge-pill badge-info mt-4 mb-4"
+                                  style="background-color: #f2408d; color: white">Lịch sử hủy lịch khám</span>
+                       
+                        <div id="unexamined-schedules" class="row" th:unless="${#lists.isEmpty(listCancelAppointment)}">
+                            <div th:id="'schedule_not_finish_' + ${appointment.getId()}" class="col-md-4 mb-4" th:each="appointment : ${listCancelAppointment}">
+                                <div class="patient_appointment_item d-flex">
+                                    <div class="appointment_number d-flex flex-column justify-content-center align-items-center">
+                                        <span class="small">Số thứ tự</span>
+                                        <span class="font-weight-bold"
+                                              style="color: #11d49a; font-size: 3rem" th:text="${appointment.getOrderNumber()}"></span>
+                                    </div>
+    
+                                    <div class="appointment_line"></div>
+                                    <div class="appointment_info d-flex justify-content-center flex-column" style="position: relative;">
+                                        <div>
+                                            <span class="ml-2" style="width: 100px; display: inline-block">Ngày khám: </span>
+                                            <span class="font-weight-bold" th:text="${#dates.format(appointment.appointmentDate, 'dd-MM-yyyy')}">23-04-2002</span>
+                                        </div>
+                                        <div >
+                                                <span class="ml-2"
+                                                      style="width: 100px; display: inline-block">Ca khám: </span>
+                                            <span class="font-weight-bold" th:text="${appointment.appointmentShift}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</th:block>
+<th:block layout:fragment="additional-link-at-bottom">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+        function openRecord(evt, date) {
+            $(".record_content").hide();
+
+
+            $(".record").removeClass("active");
+
+            $("#" + date).show();
+            $(evt.currentTarget).addClass("active");
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabContents = document.querySelectorAll(".record_content");
+
+            for (var i = 1; i < tabContents.length; i++) {
+                tabContents[i].style.display = "none";
+            }
+        });
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabButtons = document.querySelectorAll(".record");
+            tabButtons[0].classList.add("active");
+        });
+
+
+        $(function() {
+            $('input[name="dateranges"]').daterangepicker({
+                    timePicker: true,
+                    locale: {
+                        format: 'DD/MM/YYYY'
+                    }
+                }
+            );
+        });
+
+    </script>
+    <script>
+        const priceElements = document.querySelectorAll('#format_price');
+        priceElements.forEach(element => {
+            const number = parseInt(element.textContent);
+
+            const formattedNumber = new Intl.NumberFormat('vi-VN').format(number);
+
+            element.textContent = formattedNumber + " VND";
+        });
+    </script>
+    <script src="/client/js/cancel-booking.js"></script>
+</th:block>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <!-- Include the head section from the 'user/layouts/head' -->
+    <th:block th:replace="~{client/layouts/head :: head}"></th:block>
+    <th:block layout:fragment="additional-link-at-head"></th:block>
+</head>
+
+<body id="top">
+    <header>
+        <!-- Include the header section from the 'user/layouts/header' -->
+        <th:block th:replace="~{client/layouts/header :: header}"></th:block>
+    </header>
+
+    <div id="header_margin"></div>
+
+    <!-- Define a block named 'main-content' -->
+    <th:block layout:fragment="main-content">
+        Inherit this fragment and modify its content
+    </th:block>
+
+    <footer>
+        <!-- Include the footer section from the 'user/layouts/footer' -->
+        <th:block th:replace="~{client/layouts/footer :: footer}"></th:block>
+    </footer>
+
+    <!-- Include the scripts section from the 'user/layouts/scripts' -->
+    <th:block th:replace="~{client/layouts/scripts :: scripts}"></th:block>
+    <th:block layout:fragment="additional-link-at-bottom"></th:block>
+</body>
+</html>

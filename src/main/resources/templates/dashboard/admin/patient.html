@@ -1,0 +1,143 @@
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/dashboard/layout/app"
+>
+
+<head>
+    <link rel="stylesheet" href="/dashboard/css/patient.css">
+</head>
+<th:block layout:fragment="content-header">
+    <div class="col-sm-6">
+        <h1>Quản lý bệnh nhân</h1>
+    </div>
+
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Quản lý bệnh nhân</li>
+        </ol>
+    </div>
+</th:block>
+
+<th:block layout:fragment="content-body">
+    <!-- Edit patient modal -->
+    <div id="patientModal" class="modal">
+        <div class="modal-content">
+            <span class="patientClose">&times;</span>
+            <p class="modal-title">Cập nhật thông tin bệnh nhân</p>
+            <div class="modal-content-body">
+                <hr>
+                <div class="input-row">
+                    <div class="input-container">
+                        <label for="patient_name">Họ và tên</label>
+                        <input class="form-control" type="text" id="patient_name" placeholder="Nhập họ và tên">
+                    </div>
+
+                    <div class="input-container">
+                        <label for="patient_ID">Mã bệnh nhân</label>
+                        <input type="text" class="form-control" disabled value="3434NWNDF23" id="patient_ID">
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-container">
+                        <label for="phone_number">Số điện thoại</label>
+                        <input class="form-control" type="text" id="phone_number" placeholder="Nhập sđt">
+                    </div>
+                    <div class="input-container">
+                        <label for="dob">Ngày sinh</label>
+                        <input class="form-control" type="date" id="dob" placeholder="Nhập ngày sinh">
+                    </div>
+                </div>
+
+
+                <div class="input-row">
+                    <div class="input-container">
+                        <label for="gender">Giới tính</label>
+                        <input class="form-control" type="text" id="gender" placeholder="Nhập giới tính">
+                    </div>
+
+                    <div class="input-container">
+                        <label for="address">Địa chỉ</label>
+                        <input class="form-control" type="text" id="address" placeholder="Nhập địa chỉ">
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-container">
+                        <label for="career">Nghề nghiệp</label>
+                        <input class="form-control" type="email" id="career" placeholder="Nhập nghề nghiệp">
+                    </div>
+                </div>
+
+
+                <div class="button-container">
+                    <button type="button" class="btn btn-primary" id="okBtn" style="margin-left: 40%; margin-top: 20px;">Xác nhận</button>
+                    <button type="button" class="btn btn-danger" id="cancelBtn" style="margin-left: 20px; margin-top: 20px;">Hủy bỏ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+        <!--body-->
+        <div class="row">
+            <div class="col-sm-12">
+                <nav style="padding-left: 0;" class="navbar navbar-light bg-light">
+                    <form method="get" action="/admin/patient" class="form-inline">
+                      <input name="key" th:value="${key}" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </nav>
+                <table id="example1"
+                       class="table table-bordered table-hover dataTable dtr-inline"
+                       aria-describedby="example2_info">
+                    <thead>
+                    <tr>
+                        <th class="sorting">Mã bệnh nhân</th>
+                        <th class="sorting">Họ và tên</th>
+                        <th class="sorting">Số điện thoại</th>
+                        <th class="sorting">Ngày sinh</th>
+                        <th class="sorting">Giới tính</th>
+                        <th class="sorting">Địa chỉ</th>
+                        <th class="sorting">Nghề nghiệp</th>
+                        <th class="sorting">Mã BHYT</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    
+                        <tr th:if="${listPatient.empty}">
+                            <td colspan="9" class="text-center">Không có dữ liệu</td>
+                        </tr>
+                        <tr th:each="patient : ${listPatient}">
+                            <td style="text-align: center;" th:text="${patient.id}">FEF334</td>
+                            <td th:text="${patient.name}">Nguyễn A</td>
+                            <td th:text="${patient.phone}">0969 699 669</td>
+                            <td th:text="${#dates.format(patient.birthday, 'dd/MM/yyyy')}">01/01/2002</td>
+                            <td th:text="${patient.gender ? 'Nam' : 'Nữ'}">Nam</td>
+                            <td th:text="${patient.address}">123 Đường</td>
+                            <td th:text="${patient.career}">Lập trình viên</td>
+                            <td th:text="${patient.citizenNumber}">3434NWNDF23</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <nav th:if="${totalPage > 1}" class="d-flex justify-content-center">
+                    <ul class="pagination">
+                        <li th:classappend="${currentPage == i ? 'active' : ''}" 
+                            th:each="i : ${#numbers.sequence(1, totalPage)}" 
+                            class="page-item">
+                            <a class="page-link" th:text="${i}" 
+                               th:href="@{'?page=' + ${i} + '&key=' + ${key}}">1</a>
+                        </li>
+                    </ul>
+                </nav>                
+            </div>
+        </div>
+    </div>
+</th:block>
+
+<th:block layout:fragment="service-script">
+    <script src="/dashboard/js/patient_modal.js"></script>
+</th:block>
+</html>

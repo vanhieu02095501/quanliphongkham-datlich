@@ -1,0 +1,143 @@
+#section-history {
+    color: black;
+    font-size: 17px;
+    background-color: #fff ;
+    border-radius: 5px;
+    padding: 45px 90px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+}
+.font-size{
+    font-size: 20px;
+}
+textarea[readonly] {
+    cursor: pointer;
+}
+
+.form_heading-text {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.form_heading-line {
+    width: 100px;
+    height: 5px;
+    background-color: var(--main-color);
+    margin: 0 auto;
+}
+
+.form_content {
+    margin-top: 40px;
+}
+
+.history_item {
+    height: auto;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+}
+.history_item:hover {
+    color: black;
+}
+.history_item-left {
+    width: 70%;
+
+}
+.history_item-right {
+    width: calc(100% - var(--history_item-left));
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center ;
+    justify-content: center;
+}
+.history_item:hover .see_detail {
+    font-weight: bold;
+}
+
+.patient_appointment_item {
+    border-radius: 8px;
+    position: relative;
+    flex-direction: row;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.appointment_number {
+    width: 40%;
+    flex: 3;
+    padding-top: 10px;
+    min-height: 100px;
+    border-radius: 5px 0 0 5px;
+    background-color: rgb(217, 255, 236);
+}
+
+.appointment_info {
+    width: 60%;
+}
+
+.appointment_line {
+    position: relative;
+    width: 1px;
+    background-color: rgb(255, 255, 255);
+    border-left: 1px dotted #cdc6c68a;
+}
+
+.tab_left {
+    float: left;
+    width: 30%;
+    border-right: 2px solid transparent;
+}
+
+.tab_left button{
+    display: block;
+    background-color: inherit;
+    border-right: 1px solid black;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    margin: 0;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 3px;
+}
+
+.tab_left button:hover {
+    background-color: #ffcee3;
+}
+
+
+.tab_left button.active {
+    border-right: 5px solid #f2408d;
+    background-color: #ffcee3;
+}
+
+
+.record_content {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 70%;
+    border-left: none;
+    border-left: 1px solid rgb(204, 204, 204);
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+.fa-calendar-xmark {
+    color: #fe2d2d;
+}
+
+.fa-calendar-xmark:hover {
+    color: #da0a0a;
+}
+
+.area-cancel:hover {
+    cursor: pointer;
+}

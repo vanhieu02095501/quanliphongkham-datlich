@@ -1,0 +1,73 @@
+<html lang="vi"
+
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/dashboard/layout/app">
+>
+<head>
+
+    <link rel="stylesheet" href="/dashboard/css/visits_statistics.css"/>
+    <title>Thống kê số lượt khám</title>>
+</head>
+<th:block layout:fragment="content-header">
+    <div class="col-sm-6">
+        <h1>Bệnh án</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Bệnh án</li>
+        </ol>
+    </div>
+</th:block>
+
+<th:block layout:fragment="content-body">
+    <h1>Thống kê số lượt khám bệnh</h1>
+
+    <div class="filter-container">
+        <label for="doctor-select">Chọn bác sĩ:</label>
+        <select id="doctor-select">
+            <option value="bac-si-1">Huỳnh Minh Đức</option>
+            <option value="bac-si-2">Nguyễn Thị Lan Anh</option>
+            <option value="bac-si-3">Trần Văn Hải</option>
+        </select>
+
+        <label>Khoảng thời gian:</label>
+        <input type="date" id="start-date">
+        <input type="date" id="end-date">
+    </div>
+
+    <div class="stats-container">
+        <h2>Số lượt khám theo ngày</h2>
+        <div id="day-chart"></div>
+
+        <h2>Số lượt khám theo tháng</h2>
+        <div id="month-chart"></div>
+
+        <h2>Số lượt khám theo năm</h2>
+        <div id="year-chart"></div>
+
+        <h2>Danh sách bệnh nhân</h2>
+        <table class="patient-table">
+            <thead>
+            <tr>
+                <th>Mã bệnh nhân</th>
+                <th>Tên bệnh nhân</th>
+                <th>Ngày khám</th>
+                <th>Chẩn đoán</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+</th:block>
+
+<th:block layout:fragment="document-script">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script src="/js/document.js"></script>
+</th:block>
+</html>

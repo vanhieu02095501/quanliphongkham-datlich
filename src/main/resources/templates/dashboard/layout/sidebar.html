@@ -1,0 +1,147 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="vi">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-c1t3AbKn87h4C3GIHl/HlNssyDwhuq0uGUMRMmecXQ+OHj0ZuPz1SCGhHP1z0V7QnLmHmY0a0F77sXNl+x8SMw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<!-- Bootstrap CSS -->
+
+
+<th:block th:fragment="page-sidebar">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="#" class="brand-link">
+            <img src="/dashboard/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+                 class="brand-image img-circle elevation-3" style="opacity: .8"><img
+        />
+            <span class="brand-text font-weight-light">Quản lý phòng khám</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-4 d-flex">
+                <div class="image" style="margin-top: -41px;">
+                    <img src="/dashboard/img/avt_admin.jpg" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+
+                    <th:block sec:authorize="hasAuthority('ADMIN')">
+                        <span th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" class="blue-text"
+                              style="color: #FFFFFF;" th:text="${#authentication.principal.username}"></span>
+                        <p th:unless="${#authorization.expression('hasAuthority(''ADMIN'')')}" style="color: #BD2626FF">
+                            Không</p>
+                        <p th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" style="color: #31bd26">
+                            Admin</p>
+                    </th:block>
+
+                    <th:block sec:authorize="hasAuthority('DOCTOR')">
+                        <span th:if="${#authorization.expression('hasAuthority(''DOCTOR'')')}" class="blue-text"
+                              style="color: #FFFFFF;" th:text="${#authentication.principal.username}"></span>
+                        <p th:unless="${#authorization.expression('hasAuthority(''DOCTOR'')')}"
+                           style="color: #BD2626FF">Không</p>
+                        <p th:if="${#authorization.expression('hasAuthority(''DOCTOR'')')}" style="color: #31bd26">
+                            Doctor</p>
+                    </th:block>
+                </div>
+            </div>
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
+                    <li class="nav-item" th:if="${#authorization.expression('hasAuthority(''DOCTOR'')')}">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-user-md"></i>
+                            <p>
+                                Bác sĩ
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/doctor/appointments" class="nav-link">
+                                    <i class="far fa-calendar-check nav-icon"></i>
+                                    <p>Quản lý Ca Khám </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/doctor/history_exam" class="nav-link">
+                                    <i class="fa fa-history nav-icon" aria-hidden="true"></i>
+                                    <p>Quản lý lịch sử khám</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="nav-item menu-dropdown border-top-grey mt-3">
+                                <a href="doctor/logout" class="nav-link">
+                                    <i class="nav-icon fas fa-power-off"></i>
+                                    <p>Đăng xuất</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                Admin
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/admin/patient" class="nav-link">
+                                    <i class="fas fa-user-injured" style="margin-right: 10px;"></i>
+                                    <p>Quản lý bệnh nhân</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/admin/service" class="nav-link">
+                                    <i class="fas fa-book-medical" style="margin-right: 10px"></i>
+                                    <p>Quản lý dịch vụ</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/admin/doctor" class="nav-link">
+                                    <i class="fas fa-user-md" style="margin-right: 10px;"></i>
+                                    <p>Quản lý nhân sự</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/admin/statistical" class="nav-link">
+                                    <i class="fas fa-book-medical" style="margin-right: 10px"></i>
+                                    <p>Thống kê doanh thu</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="nav-item menu-dropdown border-top-grey ">
+                                <a href="/admin/logout" class="nav-link">
+                                    <i class="nav-icon fas fa-power-off"></i>
+                                    <p> Đăng xuất</p>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+</th:block>
+<aside id="sidebar" class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Sidebar content -->
+</aside>
+
+<!-- Thêm nút điều hướng để mở/collapse sidebar -->
+<button class="btn btn-primary" onclick="toggleSidebar()">Toggle Sidebar</button>
+
+<script>
+    function toggleSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('sidebar-collapse');
+    }
+
+
+</script>

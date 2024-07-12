@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/client/layouts/base_layout"
+>
+
+<th:block layout:fragment="additional-link-at-head">
+    <link rel="stylesheet" href="/client/css/about.css">
+    <style>
+        #section-about {
+            color: black;
+            font-size: 17px;
+            background-color: #d4edda;
+            border-radius: 5px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            padding: 35px;
+        }
+    </style>
+</th:block>
+
+<th:block layout:fragment="main-content">
+    <section class="section">
+        <div class="container">
+            <div id="section-about" class="">
+                <div class="alert d-flex align-items-center" role="alert">
+                    <div>
+                        <h4 class="alert-heading">Đăng ký thành công!</h4>
+                        <p>Hệ thống đã gửi một email xác nhận đến địa chỉ của bạn để kích hoạt tài khoản.</p>
+                        <hr>
+                        <p class="mb-0">Vui lòng kiểm tra hộp thư đến của bạn và làm theo hướng dẫn để hoàn tất quá trình đăng ký.</p>
+                        <a href="https://mail.google.com/mail" class="btn btn-primary mt-2" target="_blank">Truy cập hòm thư</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</th:block>
+    

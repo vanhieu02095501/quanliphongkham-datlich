@@ -1,0 +1,20 @@
+.cd-timeline-content ul {
+    padding-left: 10px;
+}
+
+.cd-timeline-content ul li{
+    list-style-position: inside;
+}
+
+.cd-timeline-content h2{
+    color: #307be7 !important;
+}
+
+.cd-timeline-content ul li{
+    color: black;
+}
+
+.cd-timeline-content ul li:hover{
+    color: #307be7 !important;
+}
+

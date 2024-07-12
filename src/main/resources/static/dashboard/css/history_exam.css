@@ -1,0 +1,134 @@
+
+button {
+    transition-duration: 0.4s;
+    margin-left: 10px;
+    border-radius: 8px;
+
+    color: #FFFFFF;
+    font-weight: 0.8;
+    border-color:#0c84ff ;
+    padding: 4px 16px;
+}
+
+.button-app{
+
+    transition-duration: 0.4s;
+    margin-left: 0px;
+    border-radius: 8px;
+
+    color: #FFFFFF;
+    font-weight: 0.8;
+    border-color:#0c84ff ;
+    padding: 4px 16px;
+    background-color: #0c84ff;
+}
+
+.button-refresh{
+    background-color: #F9AA33;
+    margin-left: 10px ;
+    border-color:  #F9AA33;
+}
+
+.button-refresh:hover {
+    background-color: #FFFFFF; /* Green */
+    color: #F9AA33;
+    border-color:  #F9AA33;
+}
+.button-app:hover {
+    background-color: #FFFFFF; /* Green */
+    color: #0c84ff;
+    border-color:  #0c84ff;
+}
+.dropdown-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 250px; /* Tùy chỉnh độ rộng */
+    margin: 20px auto; /* Tùy chỉnh vị trí */
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Bo tròn góc */
+}
+
+.dropdown-input {
+    flex: 1; /* Chiếm phần lớn diện tích */
+    padding: 10px;
+    font-size: 16px;
+    border: none; /* Bỏ viền mặc định */
+    outline: none; /* Bỏ đường viền khi focus */
+}
+
+.dropdown-toggle-button {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #ccc;
+    border: none;
+    border-radius: 5px; /* Bo tròn góc */
+    position: relative; /* Để đặt icon mũi tên */
+}
+
+.dropdown-toggle-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    border-width: 5px 5px 0 0;
+    border-style: solid;
+    border-color: #000;
+    pointer-events: none; /* Ngăn click vào icon */
+}
+
+.dropdown-list {
+    position: absolute;
+    top: 100%; /* Hiển thị danh sách bên dưới khung nhập liệu */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Bo tròn góc */
+    display: none; /* Danh sách ẩn theo mặc định */
+    z-index: 1; /* Đặt z-index cao hơn các element khác */
+}
+
+.dropdown-option {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    white-space: nowrap; /* Ngăn text tự động xuống dòng */
+}
+
+.dropdown-option:hover {
+    background-color: #f0f0f0; /* Màu nền khi hover */
+}
+
+.prescription{
+    width: 300px; /* Tùy chỉnh độ rộng */
+    height: 120px; /* Tùy chỉnh chiều cao */
+    border: 1px solid #ccc;
+    overflow-y: auto; /* Thêm scrollbar theo chiều dọc */
+    background-color: #f5e1e1;
+
+}
+.prescription p{
+
+    margin-left: 8px;
+}
+
+.is-invalid {
+    border-color: #dc3545;
+}
+.invalid-feedback {
+    color: #dc3545;
+    display: none;
+}
+
+.see-detail {
+    width: 45px;
+    height: 40px;
+    display: flex;
+    background: #007bff;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+}

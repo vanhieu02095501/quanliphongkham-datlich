@@ -1,0 +1,34 @@
+
+.filter-container {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.filter-container label {
+    margin-right: 10px;
+}
+
+.stats-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.stats-container h2 {
+    margin-bottom: 10px;
+}
+
+.stats-container div[id*="chart"] {
+    width: 50%;
+    height: 300px; /* Tùy chỉnh kích thước biểu đồ */
+}
+
+.patient-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.patient-table th,
+.patient-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}

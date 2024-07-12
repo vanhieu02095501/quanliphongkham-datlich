@@ -1,0 +1,91 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/client/layouts/base_layout"
+>
+
+<th:block layout:fragment="additional-link-at-head">
+    <link rel="stylesheet" href="/client/css/style.css">
+    <link rel="stylesheet" href="/client/css/personalinfo.css">
+</th:block>
+<th:block layout:fragment="main-content">
+    <section style="margin-top: 150px">
+        <div class="container-sm my-5 shadow-lg p-3 mb-5 bg-white rounded" style="width: 50rem;">
+            <form>
+                <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card h-100" >
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-center mb-3 pb-1">
+                                    <span class="h1 fw-bold mb-0">THÔNG TIN CÁ NHÂN</span>
+                                </div>
+                                <div class="row gutters" th:if="${user != null}">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="card h-100 mb-7">
+                                            <div class="card-body">
+                                                <div class="account-settings">
+                                                    <div class="user-profile">
+                                                        <div class="user-avatar">
+                                                            <img th:src="${user.getAvatar() != null ? user.getAvatar() : '/client/images/photo.png'}" alt="Avatar">
+                                                        </div>
+                                                        <h5 class="user-name" th:text="${user.getUsername()}"></h5>
+                                                        <h6 class="user-email" th:text="${user.getEmail()}"></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <label class="control-label col-sm-3 h5 text-right" style="margin-top: -8px;">Họ và tên:</label>
+                                        <div class="col-sm-4">
+                                            <p class="form-control-static" th:text="${user.getUsername()}"></p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <label class="control-label col-sm-3 h5 text-right" style="margin-top: -8px;">Email:</label>
+                                        <div class="col-sm-4">
+                                            <p class="form-control-static" th:text="${user.getEmail()}"></p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <label class="control-label col-sm-3 h5 text-right" style="margin-top: -8px;">Số điện thoại:</label>
+                                        <div class="col-sm-4">
+                                            <p class="form-control-static" th:if="${user.getCustomer() != null}" th:text="${user.getCustomer().getPhone()}"></p>
+                                            <p class="form-control-static" th:if="${user.getCustomer()== null }" style="color: red;">Chưa có thông tin</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <label class="control-label col-sm-3 h5 text-right" style="margin-top: -8px;">Giới tính:</label>
+                                        <div class="col-sm-4">
+                                            <p class="form-control-static" th:if="${user.getCustomer() != null}" th:text="${user.getCustomer().getGender()== true ? 'Nam' : 'Nữ'}"></p>
+                                            <p class="form-control-static" th:if="${user.getCustomer()== null}" style="color: red;">Chưa có thông tin</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center mb-3 pb-1">
+                                        <label class="control-label col-sm-3 h5 text-right" style="margin-top: -8px;">Địa chỉ:</label>
+                                        <div class="col-sm-4">
+                                            <p class="form-control-static" th:if="${user.getCustomer() != null}" th:text="${user.getCustomer().getAddress()}"></p>
+                                            <p class="form-control-static" th:if="${user.getCustomer() == null }" style="color: red;">Chưa có thông tin</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row gutters">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="text-right">
+                                            <a href="/client/personalinfo/edit"><button type="button" id="submit" name="submit"
+                                                                                        class="btn btn-submit">Cập nhật thông tin</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</th:block>
